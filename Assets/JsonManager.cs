@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Net;
 using System.Xml.Linq;
 using UnityEditor;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
@@ -48,7 +49,9 @@ public class JsonManager : MonoBehaviour
     [System.Serializable]
     public class GDocResponse // this class is used to parse the JSON
     {
-        public string[] question;
+        public string question; //{ get; set; }
+        public string answer; //{ get; set; }
+        public List<string> arr; //{ get; set; }
         //[SerializeField] public List<QuizDataScriptable> jsonData;
     }
 
@@ -75,7 +78,7 @@ public class JsonManager : MonoBehaviour
         for (int i = 0; i < data.Length; i++)
             {
 
-            Load(data[i].question[i], quiz[0].questions[i].questionInfo);
+            Load(data[i].question, quiz[i].questions[i].questionInfo); ;
 
             }
        // }
@@ -100,16 +103,24 @@ public class JsonManager : MonoBehaviour
             yield return www;
 
             print("Json is downloaded");
-
             JsonTxt = www.text.ToString();
+
+            //JsonTxt = JsonTxt.Trim('[', ']');
+
+            JsonTxt = fixJson(JsonTxt);
+
+            print(JsonTxt);
 
             CheckForImportRequestEnd(); // the only way to wait for a process to finish is with this
 
-            //print(JsonTxt);
         }
     }
 
-
+    string fixJson(string value)
+    {
+        value = "{\"Items\":" + value + "}";
+        return value;
+    }
 
 
     public static class JsonHelper

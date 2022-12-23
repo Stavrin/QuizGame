@@ -142,7 +142,7 @@ public class QuizManager : MonoBehaviour
     }
 }
 
-//Datastructure for storeing the quetions data
+//Datastructure for storing the questions data
 [System.Serializable]
 public class Question
 {

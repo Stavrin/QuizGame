@@ -78,9 +78,14 @@ public class JsonManager : MonoBehaviour
         for (int i = 0; i < data.Length; i++)
             {
 
-            Load(data[i].question, quiz[0].questions[i].questionInfo); ;
+            //Load(JsonTxt, quiz); ;
+            //might work, but the fields would probably have to be identical to the GDocResponse class, in the scriptable object.
 
-            //quiz[0].questions[i].questionInfo = data[i].question;
+            quiz[0].questions[i].questionInfo = data[i].question;
+            quiz[0].questions[i].correctAns = data[i].answer;
+
+                for (int a = 0; a < 4; a++)
+                    quiz[0].questions[i].options[a] = data[i].arr[a];
 
             }
        // }

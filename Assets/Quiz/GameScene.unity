@@ -1428,8 +1428,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quiz:
-  - {fileID: 11400000, guid: 18e5de2f60b71014e8444a5b05ffd8e7, type: 2}
-  JsonLink: https://script.google.com/macros/s/AKfycbyASblcdhZV_pS4h6ZbwuZxrMa-wButEdawcNGxNNtH3OEy9L-oHvRv2npCjl9u-bpr/exec
+  - {fileID: 11400000, guid: 3f20b618ebb9b98498afa476f6bbd862, type: 2}
+  data:
+    question: 
+    answer: 
+    arr: []
 --- !u!4 &679223530
 Transform:
   m_ObjectHideFlags: 0

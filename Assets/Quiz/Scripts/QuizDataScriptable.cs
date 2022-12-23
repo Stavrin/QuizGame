@@ -6,5 +6,5 @@ using UnityEngine;
 public class QuizDataScriptable : ScriptableObject
 {
     public string categoryName;
-    public List<Question> questions;
+    public List<Question> questions = new List<Question>(new Question[50]);
 }

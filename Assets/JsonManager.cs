@@ -78,7 +78,9 @@ public class JsonManager : MonoBehaviour
         for (int i = 0; i < data.Length; i++)
             {
 
-            Load(data[i].question, quiz[i].questions[i].questionInfo); ;
+            Load(data[i].question, quiz[0].questions[i].questionInfo); ;
+
+            //quiz[0].questions[i].questionInfo = data[i].question;
 
             }
        // }

@@ -146,7 +146,7 @@ public class QuizManager : MonoBehaviour
 [System.Serializable]
 public class Question
 {
-    public string questionInfo;         //question text
+    public string questionInfo = "1";         //question text
     public QuestionType questionType;   //type
     public Sprite questionImage;        //image for Image Type
     public AudioClip audioClip;         //audio for audio type

@@ -71,6 +71,11 @@ public class JsonManager : MonoBehaviour
         //quiz[0].questions = new List<Question>();
 
         //for (int i = 0; i < data.Length; i++)
+
+        //make quiz[0]questions be reset to a new list of type quizdatascriptable, with 1 count, then put new stuff
+        //in, would make it able to expand or shrink, need at least 1 question, if 0 questions could make warning appear
+        //in debug log.
+
         if (quiz[0].questions.Count < data.Length)
             quiz[0].questions.AddRange(new Question[data.Length]);
 

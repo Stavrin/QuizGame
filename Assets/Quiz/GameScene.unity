@@ -448,8 +448,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2070216836}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: RestryButton
+        m_TargetAssemblyTypeName: QuizGameUI, Assembly-CSharp
+        m_MethodName: RetryButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1235,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1314016, y: 0.20567639}
   m_AnchorMax: {x: 0.8721026, y: 0.7983641}
-  m_AnchoredPosition: {x: -1.5, y: -2.5}
+  m_AnchoredPosition: {x: -1.5, y: -2.4999847}
   m_SizeDelta: {x: -5.0200195, y: -1.5999756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &621084056
@@ -2238,7 +2238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1297566482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2940,10 +2940,10 @@ RectTransform:
   m_Father: {fileID: 1297566483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 171.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 849.4209, y: -168.5607}
+  m_SizeDelta: {x: 1638.8418, y: 171.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1731333583
 MonoBehaviour:

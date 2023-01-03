@@ -101,7 +101,7 @@ public class JsonManager : MonoBehaviour
                 if (quiz[0].questions.Count < data.Length)
                     quiz[0].questions.AddRange(new Question[data.Length]);
 
-                StartCoroutine(AddData(3f, data));
+                StartCoroutine(AddData(5f, data));
 
 
     }

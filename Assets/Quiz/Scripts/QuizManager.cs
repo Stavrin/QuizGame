@@ -39,6 +39,10 @@ public class QuizManager : MonoBehaviour
         currentTime = timeInSeconds;
         //set the questions data
         questions = new List<Question>();
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         dataScriptable = quizDataList[categoryIndex];
         questions.AddRange(dataScriptable.questions);
         //select the question

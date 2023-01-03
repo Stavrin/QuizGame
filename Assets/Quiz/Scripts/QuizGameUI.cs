@@ -28,9 +28,33 @@ public class QuizGameUI : MonoBehaviour
     private Question question;          //store current question data
     private bool answered = false;      //bool to keep track if answered or not
 
+    private bool loaded = false;
+
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
     public GameObject GameOverPanel { get => gameOverPanel; }                     //getter
+    
+    public static QuizGameUI instance = null; //Needed as part of the functionality in Awake, so there can only be one instance. 
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Start();
+    }
+    
+    void Awake()
+    {
+        //Check if there is already an instance of this.
+        if (instance == null)
+            //if not, set it to this.
+            instance = this;
+        //If instance already exists:
+        else if (instance != this)
+            //Destroy this, this enforces our singleton pattern so there can only be one instance.
+            Destroy(gameObject);
+
+        //Set this to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
+       // DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
@@ -45,6 +69,11 @@ public class QuizGameUI : MonoBehaviour
         CreateCategoryButtons();
 
     }
+    
+    void Update () {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
     /// <summary>
     /// Method which populate the question on the screen
     /// </summary>
@@ -175,6 +204,9 @@ public class QuizGameUI : MonoBehaviour
         //we loop through all the available catgories in our QuizManager
         for (int i = 0; i < quizManager.QuizData.Count; i++)
         {
+            if(!loaded)
+                loading.SetActive(true);
+            
             //Create new CategoryBtn
             CategoryBtnScript categoryBtn = Instantiate(categoryBtnPrefab, scrollHolder.transform);
             //Set the button default values
@@ -189,6 +221,13 @@ public class QuizGameUI : MonoBehaviour
         
         scrollHolder.SetActive(false);
 
+        if (loaded)
+        {
+            loading.SetActive(false);
+            scrollHolder.SetActive(true);
+            
+        }
+
     }
 
 
@@ -198,8 +237,9 @@ public class QuizGameUI : MonoBehaviour
 
         scrollHolder.SetActive(true);
         loading.SetActive(false);
+        loaded = true;
 
-        
+
 
     }
     
@@ -228,5 +268,7 @@ public class QuizGameUI : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    
+    
 
 }

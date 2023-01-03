@@ -13,15 +13,4 @@ MonoBehaviour:
   m_Name: VotingData
   m_EditorClassIdentifier: 
   categoryName: Voting
-  questions:
-  - questionInfo: What colour is the sky?
-    questionType: 0
-    questionImage: {fileID: 0}
-    audioClip: {fileID: 0}
-    videoClip: {fileID: 0}
-    options:
-    - Blue
-    - Yellow
-    - Orange
-    - Red
-    correctAns: Blue
+  questions: []

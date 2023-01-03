@@ -110,7 +110,7 @@ public class JsonManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
 
-        if (data != null)
+        if (data != null && quiz != null)
         {
 
 
@@ -126,7 +126,7 @@ public class JsonManager : MonoBehaviour
                 quiz[0].questions[i].questionInfo = data[i].question;
                 quiz[0].questions[i].correctAns = data[i].answer;
 
-                for (int a = 0; a < 4; a++)
+                for (int a = 0; a < quiz[0].questions[i].options.Count; a++)
                     quiz[0].questions[i].options[a] = data[i].arr[a];
 
             }

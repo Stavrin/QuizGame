@@ -18,7 +18,7 @@ public class QuizManager : MonoBehaviour
     //questions data
     private List<Question> questions;
     //current question data
-    private Question selectedQuetion = new Question();
+    private Question selectedQuestion = new Question();
     private int gameScore;
     private int lifesRemaining;
     private float currentTime;
@@ -37,8 +37,10 @@ public class QuizManager : MonoBehaviour
         gameScore = 0;
         lifesRemaining = 3;
         currentTime = timeInSeconds;
+        
         //set the questions data
-        questions = new List<Question>();
+        //questions = new List<Question>();
+        
         dataScriptable = quizDataList[categoryIndex];
         questions.AddRange(dataScriptable.questions);
         //select the question
@@ -53,10 +55,10 @@ public class QuizManager : MonoBehaviour
     {
         //get the random number
         int val = UnityEngine.Random.Range(0, questions.Count);
-        //set the selectedQuetion
-        selectedQuetion = questions[val];
+        //set the selectedQuestion
+        selectedQuestion = questions[val];
         //send the question to quizGameUI
-        quizGameUI.SetQuestion(selectedQuetion);
+        quizGameUI.SetQuestion(selectedQuestion);
 
         questions.RemoveAt(val);
     }
@@ -92,7 +94,7 @@ public class QuizManager : MonoBehaviour
         //set default to false
         bool correct = false;
         //if selected answer is similar to the correctAns
-        if (selectedQuetion.correctAns == selectedOption)
+        if (selectedQuestion.correctAns == selectedOption)
         {
             //Yes, Ans is correct
             correctAnswerCount++;
@@ -146,12 +148,12 @@ public class QuizManager : MonoBehaviour
 [System.Serializable]
 public class Question
 {
-    public string questionInfo = "1";         //question text
+    public string questionInfo;         //question text
     public QuestionType questionType;   //type
     public Sprite questionImage;        //image for Image Type
     public AudioClip audioClip;         //audio for audio type
     public UnityEngine.Video.VideoClip videoClip;   //video for video type
-    public List<string> options  = new List<string>(new string[4]);       //options to select
+    public List<string> options  = new List<string>(new string[5]);       //options to select
     public string correctAns;           //correct option
 }
 

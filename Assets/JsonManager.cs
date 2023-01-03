@@ -101,7 +101,7 @@ public class JsonManager : MonoBehaviour
                 if (quiz[0].questions.Count < data.Length)
                     quiz[0].questions.AddRange(new Question[data.Length]);
 
-                StartCoroutine(AddData(5f, data));
+                StartCoroutine(AddData(3f, data));
 
 
     }
@@ -110,19 +110,27 @@ public class JsonManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
 
-        for (int i = 0; i < data.Length; i++)
+        if (data != null)
         {
 
-            //Load(JsonTxt, quiz); ;
-            //might work, but the fields would probably have to be identical to the GDocResponse class, in the scriptable object.
 
-            //quiz[0].questions.Count = data.Length;
 
-            quiz[0].questions[i].questionInfo = data[i].question;
-            quiz[0].questions[i].correctAns = data[i].answer;
+            for (int i = 0; i < data.Length; i++)
+            {
 
-            for (int a = 0; a < 4; a++)
-                quiz[0].questions[i].options[a] = data[i].arr[a];
+                //Load(JsonTxt, quiz); ;
+                //might work, but the fields would probably have to be identical to the GDocResponse class, in the scriptable object.
+
+                //quiz[0].questions.Count = data.Length;
+
+                quiz[0].questions[i].questionInfo = data[i].question;
+                quiz[0].questions[i].correctAns = data[i].answer;
+
+                for (int a = 0; a < 4; a++)
+                    quiz[0].questions[i].options[a] = data[i].arr[a];
+
+            }
+
 
         }
 

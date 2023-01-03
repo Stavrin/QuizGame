@@ -19,6 +19,9 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private AudioSource questionAudio;             //audio source for audio clip
     [SerializeField] private Text questionInfoText;                 //text to show question
     [SerializeField] private List<Button> options;                  //options button reference
+
+    [SerializeField] private GameObject loading;
+    
 #pragma warning restore 649
 
     private float audioLength;          //store audio length
@@ -38,6 +41,7 @@ public class QuizGameUI : MonoBehaviour
             localBtn.onClick.AddListener(() => OnClick(localBtn));
         }
 
+        //Invoke("CreateCategoryButtons", 5.0f);
         CreateCategoryButtons();
 
     }
@@ -178,8 +182,27 @@ public class QuizGameUI : MonoBehaviour
             int index = i;
             //Add listner to button which calls CategoryBtn method
             categoryBtn.Btn.onClick.AddListener(() => CategoryBtn(index, quizManager.QuizData[index].categoryName));
+
+             //the following is to make the buttons unclickable until json data loaded.
+             StartCoroutine(ActivateButtons(5.5f));
         }
+        
+        scrollHolder.SetActive(false);
+
     }
+
+
+    IEnumerator ActivateButtons(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+
+        scrollHolder.SetActive(true);
+        loading.SetActive(false);
+
+        
+
+    }
+    
 
     //Method called by Category Button
     private void CategoryBtn(int index, string category)

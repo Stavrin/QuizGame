@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   categoryName: Voting
   questions:
-  - questionInfo: 
+  - questionInfo: What colour is the sky?
     questionType: 0
     questionImage: {fileID: 0}
     audioClip: {fileID: 0}
     videoClip: {fileID: 0}
     options:
-    - 
-    - 
-    - 
-    - 
-    correctAns: 
+    - Blue
+    - Yellow
+    - Orange
+    - Red
+    correctAns: Blue

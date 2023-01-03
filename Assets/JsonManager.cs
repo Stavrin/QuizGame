@@ -13,10 +13,10 @@ public class JsonManager : MonoBehaviour
 
     public GDocResponse data;
 
-    private string JsonTxt;
+    private string JsonTxt = null;
     private string JsonLink = "https://script.google.com/macros/s/AKfycbyqSyn7He9t5tg9Tzd1Ps_Q6i_IoF6VIy0RxDNOI0jEvDf_F1oRLw4zxjwS9I3Zfb8/exec";
     public void Start()
-{
+    {
         //quiz = (QuizDataScriptable)Target;
 
         StartCoroutine(GetJson(JsonLink));
@@ -76,13 +76,15 @@ public class JsonManager : MonoBehaviour
         //in, would make it able to expand or shrink, need at least 1 question, if 0 questions could make warning appear
         //in debug log.
 
-        if (quiz[0].questions.Count < data.Length)
-            quiz[0].questions.AddRange(new Question[data.Length]);
 
-        StartCoroutine(AddData(5f,data));
+                quiz[0].questions = new List<Question>();
+
+                if (quiz[0].questions.Count < data.Length)
+                    quiz[0].questions.AddRange(new Question[data.Length]);
+
+                StartCoroutine(AddData(5f, data));
 
 
-        // }
     }
 
     IEnumerator AddData(float timer, GDocResponse[] data)
@@ -126,16 +128,25 @@ public class JsonManager : MonoBehaviour
         {
             yield return www;
 
-            print("Json is downloaded");
-            JsonTxt = www.text.ToString();
+            if (www.text != "") //only reset the question list if there's a network connection and the json is downloaded.
+            {
 
-            //JsonTxt = JsonTxt.Trim('[', ']');
+                print("Json is downloaded");
+                JsonTxt = www.text.ToString();
 
-            JsonTxt = fixJson(JsonTxt);
+                //JsonTxt = JsonTxt.Trim('[', ']');
 
-            print(JsonTxt);
+                JsonTxt = fixJson(JsonTxt);
 
-            CheckForImportRequestEnd(); // the only way to wait for a process to finish is with this
+                print(JsonTxt);
+
+                CheckForImportRequestEnd(); // the only way to wait for a process to finish is with this
+            }
+
+            else
+            {
+                Debug.LogError("There was no JSON file downloaded from server, check network connection.");
+            }
 
         }
     }

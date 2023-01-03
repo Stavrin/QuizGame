@@ -15,9 +15,28 @@ public class JsonManager : MonoBehaviour
 
     private string JsonTxt = null;
     private string JsonLink = "https://script.google.com/macros/s/AKfycbyqSyn7He9t5tg9Tzd1Ps_Q6i_IoF6VIy0RxDNOI0jEvDf_F1oRLw4zxjwS9I3Zfb8/exec";
+    
+    public static JsonManager instance = null; //Needed as part of the functionality in Awake, so there can only be one instance.  
+    
+    void Awake()
+    {
+        //Check if there is already an instance of JsonManager.
+        if (instance == null)
+            //if not, set it to this.
+            instance = this;
+        //If instance already exists:
+        else if (instance != this)
+            //Destroy this, this enforces our singleton pattern so there can only be one instance.
+            Destroy(gameObject);
+
+        //Set this to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
+        //Also so that the json isn't fetched every time the player restarts the quiz.
+        DontDestroyOnLoad(gameObject);
+    }
     public void Start()
     {
         //quiz = (QuizDataScriptable)Target;
+        
 
         StartCoroutine(GetJson(JsonLink));
 

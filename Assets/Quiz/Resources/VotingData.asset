@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   categoryName: Voting
   questions:
-  - questionInfo: What colour is the sky?
+  - questionInfo: Which bye-law is correct?
     questionType: 0
     questionImage: {fileID: 0}
     audioClip: {fileID: 0}

@@ -28,7 +28,7 @@ public class QuizGameUI : MonoBehaviour
     private Question question;          //store current question data
     private bool answered = false;      //bool to keep track if answered or not
 
-    private bool loaded = false;
+    public bool loaded;
 
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
@@ -36,10 +36,12 @@ public class QuizGameUI : MonoBehaviour
     
     public static QuizGameUI instance = null; //Needed as part of the functionality in Awake, so there can only be one instance. 
     
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+
+    public static QuizGameUI GetInstance()
     {
-        //Start();
+        return instance;
     }
+
     
     void Awake()
     {
@@ -70,9 +72,7 @@ public class QuizGameUI : MonoBehaviour
 
     }
     
-    void Update () {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+
     
     /// <summary>
     /// Method which populate the question on the screen
@@ -199,14 +199,12 @@ public class QuizGameUI : MonoBehaviour
     /// <summary>
     /// Method to create Category Buttons dynamically
     /// </summary>
-    void CreateCategoryButtons()
+    public void CreateCategoryButtons()
     {
         //we loop through all the available catgories in our QuizManager
         for (int i = 0; i < quizManager.QuizData.Count; i++)
         {
-            if(!loaded)
-                loading.SetActive(true);
-            
+                        
             //Create new CategoryBtn
             CategoryBtnScript categoryBtn = Instantiate(categoryBtnPrefab, scrollHolder.transform);
             //Set the button default values
@@ -215,8 +213,16 @@ public class QuizGameUI : MonoBehaviour
             //Add listner to button which calls CategoryBtn method
             categoryBtn.Btn.onClick.AddListener(() => CategoryBtn(index, quizManager.QuizData[index].categoryName));
 
-             //the following is to make the buttons unclickable until json data loaded.
-             StartCoroutine(ActivateButtons(5.5f));
+            if(!loaded)
+            {
+                
+                loading.SetActive(true);
+            //the following is to make the buttons unclickable until json data loaded.
+            //made this take place elsewhere now, in jsonmanager script.
+             //StartCoroutine(ActivateButtons(6.0f)); 
+            }
+            else
+                StartCoroutine(ActivateButtons(0f));
         }
         
         scrollHolder.SetActive(false);
@@ -231,7 +237,7 @@ public class QuizGameUI : MonoBehaviour
     }
 
 
-    IEnumerator ActivateButtons(float timer)
+    public IEnumerator ActivateButtons(float timer)
     {
         yield return new WaitForSeconds(timer);
 
@@ -264,7 +270,7 @@ public class QuizGameUI : MonoBehaviour
         }
     }
 
-    public void RestryButton()
+    public void RetryButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

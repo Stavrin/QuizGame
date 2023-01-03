@@ -3,20 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class JsonManager : MonoBehaviour
 {
 
     private UnityWebRequest _webRequest;
     [SerializeField] private List<QuizDataScriptable> quiz;
+
+    [SerializeField] private QuizGameUI qUI;
+    
     //GDocResponse result = new GDocResponse();
 
-    public GDocResponse data;
+    private GDocResponse[] data;
 
     private string JsonTxt = null;
     private string JsonLink = "https://script.google.com/macros/s/AKfycbyqSyn7He9t5tg9Tzd1Ps_Q6i_IoF6VIy0RxDNOI0jEvDf_F1oRLw4zxjwS9I3Zfb8/exec";
     
-    public static JsonManager instance = null; //Needed as part of the functionality in Awake, so there can only be one instance.  
+    public static JsonManager instance; //Needed as part of the functionality in Awake, so there can only be one instance.  
+    
+    
+    public static JsonManager GetInstance()
+    {
+        return instance;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        QuizGameUI qUI = QuizGameUI.GetInstance();
+        qUI.loaded = true;
+    }
     
     void Awake()
     {
@@ -37,12 +53,19 @@ public class JsonManager : MonoBehaviour
     {
         //quiz = (QuizDataScriptable)Target;
         
+        qUI = QuizGameUI.GetInstance(); //to use its functions.
 
         StartCoroutine(GetJson(JsonLink));
 
 
 
 
+
+    }
+    
+    void Update () {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        
 
     }
     /*
@@ -76,7 +99,9 @@ public class JsonManager : MonoBehaviour
         //if (_webRequest != null && _webRequest.isDone)
         //{
 
-        GDocResponse[] data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
+        //GDocResponse[] data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
+        data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
+
 
 
         //var result = JsonUtility.FromJson<GDocResponse>(JsonTxt);
@@ -95,15 +120,32 @@ public class JsonManager : MonoBehaviour
         //in, would make it able to expand or shrink, need at least 1 question, if 0 questions could make warning appear
         //in debug log.
 
+        if (data[0].question == quiz[0].questions[0].questionInfo)
+        {
+            quiz[0].questions = new List<Question>();
 
-                quiz[0].questions = new List<Question>();
+            if (quiz[0].questions.Count < data.Length)
+                quiz[0].questions.AddRange(new Question[data.Length]);
 
-                if (quiz[0].questions.Count < data.Length)
-                    quiz[0].questions.AddRange(new Question[data.Length]);
+            StartCoroutine(AddData(5f, data));
+        }
+        else
+        {
+            //CheckForImportRequestEnd(); //try again if data is not synced.
+            Debug.LogError("json error, try again.");
+            Invoke("CheckForImportRequestEnd", 1.0f);
+        }
 
-                StartCoroutine(AddData(5f, data));
 
 
+
+    }
+    
+    void HandleLog(string logString, string stackTrace, LogType type) {
+        
+        //if (type == LogType.Error) {
+            StartCoroutine(AddData(1f, data));
+        //}   
     }
 
     IEnumerator AddData(float timer, GDocResponse[] data)
@@ -124,12 +166,18 @@ public class JsonManager : MonoBehaviour
                 //quiz[0].questions.Count = data.Length;
 
                 quiz[0].questions[i].questionInfo = data[i].question;
+                
+                //Application.logMessageReceived += HandleLog; //if there's an error, try again. Doesn't work.
+
                 quiz[0].questions[i].correctAns = data[i].answer;
 
                 for (int a = 0; a < 4; a++)
                     quiz[0].questions[i].options[a] = data[i].arr[a];
 
             }
+
+
+            StartCoroutine(qUI.ActivateButtons(0f)); //only activate the buttons when the data is loaded.
 
 
         }

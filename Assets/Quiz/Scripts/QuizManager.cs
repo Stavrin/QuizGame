@@ -39,10 +39,6 @@ public class QuizManager : MonoBehaviour
         currentTime = timeInSeconds;
         //set the questions data
         questions = new List<Question>();
-<<<<<<< Updated upstream
-=======
-        
->>>>>>> Stashed changes
         dataScriptable = quizDataList[categoryIndex];
         questions.AddRange(dataScriptable.questions);
         //select the question
@@ -150,7 +146,7 @@ public class QuizManager : MonoBehaviour
 [System.Serializable]
 public class Question
 {
-    public string questionInfo = "1";         //question text
+    public string questionInfo = "Which bye-law is correct?";         //question text
     public QuestionType questionType;   //type
     public Sprite questionImage;        //image for Image Type
     public AudioClip audioClip;         //audio for audio type

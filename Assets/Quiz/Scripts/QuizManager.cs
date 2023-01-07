@@ -151,7 +151,7 @@ public class Question
     public Sprite questionImage;        //image for Image Type
     public AudioClip audioClip;         //audio for audio type
     public UnityEngine.Video.VideoClip videoClip;   //video for video type
-    public List<string> options  = new List<string>(new string[4]);       //options to select
+    public List<string> options  = new List<string>(new string[4]);        //options to select
     public string correctAns;           //correct option
 }
 

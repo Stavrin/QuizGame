@@ -122,17 +122,23 @@ public class JsonManager : MonoBehaviour
 
         if (data[0].question == quiz[0].questions[0].questionInfo)
         {
-            quiz[0].questions = new List<Question>();
+
 
             if (quiz[0].questions.Count < data.Length)
-                quiz[0].questions.AddRange(new Question[data.Length]);
-
-            StartCoroutine(AddData(5f, data));
+                quiz[0].questions.AddRange(new Question[data.Length - 1]);
+            
+            if (!(quiz[0].questions[0].questionInfo == null))
+                StartCoroutine(AddData(5f, data));
+            else
+            {
+                Debug.LogError("list error, try again.");
+                Invoke("CheckForImportRequestEnd", 1.0f);
+            }
         }
         else
         {
             //CheckForImportRequestEnd(); //try again if data is not synced.
-            Debug.LogError("json error, try again.");
+            Debug.LogError("list error, try again.");
             Invoke("CheckForImportRequestEnd", 1.0f);
         }
 
@@ -215,7 +221,20 @@ public class JsonManager : MonoBehaviour
 
                 print(JsonTxt);
 
-                CheckForImportRequestEnd(); // the only way to wait for a process to finish is with this
+                if (!(JsonTxt == null)) //if there's a json txt remove all questions apart from 1.
+                {
+                    quiz[0].questions.RemoveRange(1, quiz[0].questions.Count - 1);
+                    //quiz[0].questions.RemoveRange(quiz[0].questions.Count - 1, 1);
+
+                }
+
+
+                //quiz[0].questions = new List<Question>(1); //reset question list in preparation for json
+                
+                yield return quiz[0].questions[0];
+
+                if(quiz[0].questions[0] != null)
+                    CheckForImportRequestEnd(); // the only way to wait for a process to finish is with this
             }
 
             else

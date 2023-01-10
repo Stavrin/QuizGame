@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
@@ -87,12 +88,12 @@ public class QuizManager : MonoBehaviour
     /// </summary>
     /// <param name="selectedOption">answer string</param>
     /// <returns></returns>
-    public bool Answer(string selectedOption)
+    public bool Answer(Button selectedOption)
     {
         //set default to false
         bool correct = false;
         //if selected answer is similar to the correctAns
-        if (selectedQuetion.correctAns == selectedOption)
+        if (selectedQuetion.correctAns.name == selectedOption.name)
         {
             //Yes, Ans is correct
             correctAnswerCount++;
@@ -151,8 +152,8 @@ public class Question
     public Sprite questionImage;        //image for Image Type
     public AudioClip audioClip;         //audio for audio type
     public UnityEngine.Video.VideoClip videoClip;   //video for video type
-    public List<string> options  = new List<string>(new string[4]);        //options to select
-    public string correctAns;           //correct option
+    public Sprite[] options  = new Sprite[4];        //options to select
+    public Sprite correctAns;           //correct option
 }
 
 [System.Serializable]
@@ -162,6 +163,7 @@ public enum QuestionType
     IMAGE,
     AUDIO,
     VIDEO
+
 }
 
 [SerializeField]

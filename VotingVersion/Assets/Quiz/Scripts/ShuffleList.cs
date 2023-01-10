@@ -1,14 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ShuffleList
 {
-    public static List<E> ShuffleListItems<E>(List<E> inputList)
+    public static List<Sprite> ShuffleListItems<Sprite>(List<Sprite> inputList)
     {
-        List<E> originalList = new List<E>();
+        List<Sprite> originalList = new List<Sprite>();
         originalList.AddRange(inputList);
-        List<E> randomList = new List<E>();
+        List<Sprite> randomList = new List<Sprite>();
 
         System.Random r = new System.Random();
         int randomIndex = 0;

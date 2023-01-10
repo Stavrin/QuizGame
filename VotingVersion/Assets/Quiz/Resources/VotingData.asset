@@ -20,46 +20,7 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     videoClip: {fileID: 0}
     options:
-    - A person shall not lie on the furniture or fittings of the library or on the
-      floor thereof.
-    - Any person driving any locomotive, railway, rolling stock or other rail vehicle
-      within the Docks Estate shall stop if pedestrians are within 10 feet and wait
-      for the pedestrians to clear the area.
-    - gfdfdgfdhgfdh
-    - A proprietor shall ensure that any operator keeps his hands and nails clean
-      and his nails short.
-    correctAns: A person shall not lie on the furniture or fittings of the library
-      or on the floor thereof.
-  - questionInfo: What is 2 + 2?
-    questionType: 0
-    questionImage: {fileID: 0}
-    audioClip: {fileID: 0}
-    videoClip: {fileID: 0}
-    options:
-    - 4
-    - 8
-    - 22
-    - dds
-    correctAns: 4
-  - questionInfo: fddg
-    questionType: 0
-    questionImage: {fileID: 0}
-    audioClip: {fileID: 0}
-    videoClip: {fileID: 0}
-    options:
-    - correcto
-    - dgd
-    - dgd
-    - dgd
-    correctAns: correcto
-  - questionInfo: hydffdh
-    questionType: 0
-    questionImage: {fileID: 0}
-    audioClip: {fileID: 0}
-    videoClip: {fileID: 0}
-    options:
-    - yes
-    - sfdf
-    - fggfgf
-    - fgfg
-    correctAns: yes
+    - {fileID: 21300000, guid: 6669d26b4f969ac4a8907dd56b968573, type: 3}
+    - {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
+    - {fileID: 21300000, guid: 85583ad8b13ba9847a56071ee4d8a3d5, type: 3}
+    correctAns: {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}

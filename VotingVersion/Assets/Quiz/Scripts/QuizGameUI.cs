@@ -20,15 +20,12 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private Text questionInfoText;                 //text to show question
     [SerializeField] private List<Button> options;                  //options button reference
 
-    [SerializeField] private GameObject loading;
     
 #pragma warning restore 649
 
     private float audioLength;          //store audio length
     private Question question;          //store current question data
     private bool answered = false;      //bool to keep track if answered or not
-
-    public bool loaded;
 
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
@@ -118,16 +115,20 @@ public class QuizGameUI : MonoBehaviour
 
         questionInfoText.text = question.questionInfo;                      //set the question text
 
-        //suffle the list of options
-        List<string> ansOptions = ShuffleList.ShuffleListItems<string>(question.options);
+        List<Sprite> listOptions = new List<Sprite>(question.options);
+
+        //shuffle the list of options
+        List<Sprite> ansOptions = ShuffleList.ShuffleListItems(listOptions);
 
         //assign options to respective option buttons
         for (int i = 0; i < options.Count; i++)
         {
             //set the child text
-            options[i].GetComponentInChildren<Text>().text = ansOptions[i];
-            options[i].name = ansOptions[i];    //set the name of button
-            options[i].image.color = normalCol; //set color of button to normal
+            options[i].GetComponentInChildren<Text>().text = "";
+            options[i].name = ansOptions[i].name;    //set the name of button
+
+            //taken out if you don't want the answers shuffled.
+            options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
         }
 
         answered = false;                       
@@ -178,7 +179,7 @@ public class QuizGameUI : MonoBehaviour
                 //set answered true
                 answered = true;
                 //get the bool value
-                bool val = quizManager.Answer(btn.name);
+                bool val = quizManager.Answer(btn);
 
                 //if its true
                 if (val)
@@ -213,26 +214,12 @@ public class QuizGameUI : MonoBehaviour
             //Add listner to button which calls CategoryBtn method
             categoryBtn.Btn.onClick.AddListener(() => CategoryBtn(index, quizManager.QuizData[index].categoryName));
 
-            if(!loaded)
-            {
-                
-                loading.SetActive(true);
-            //the following is to make the buttons unclickable until json data loaded.
-            //made this take place elsewhere now, in jsonmanager script.
-             //StartCoroutine(ActivateButtons(6.0f)); 
-            }
-            else
+
                 StartCoroutine(ActivateButtons(0f));
         }
         
         scrollHolder.SetActive(false);
 
-        if (loaded)
-        {
-            loading.SetActive(false);
-            scrollHolder.SetActive(true);
-            
-        }
 
     }
 
@@ -242,8 +229,7 @@ public class QuizGameUI : MonoBehaviour
         yield return new WaitForSeconds(timer);
 
         scrollHolder.SetActive(true);
-        loading.SetActive(false);
-        loaded = true;
+
 
 
 

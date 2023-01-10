@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f611d797432e3f846885b2b12fde5f35, type: 3}
+  m_Name: VotingData
+  m_EditorClassIdentifier: 
+  categoryName: Voting
+  questions:
+  - questionInfo: Which bye-law is correct?
+    questionType: 0
+    questionImage: {fileID: 0}
+    audioClip: {fileID: 0}
+    videoClip: {fileID: 0}
+    options:
+    - A person shall not lie on the furniture or fittings of the library or on the
+      floor thereof.
+    - Any person driving any locomotive, railway, rolling stock or other rail vehicle
+      within the Docks Estate shall stop if pedestrians are within 10 feet and wait
+      for the pedestrians to clear the area.
+    - gfdfdgfdhgfdh
+    - A proprietor shall ensure that any operator keeps his hands and nails clean
+      and his nails short.
+    correctAns: A person shall not lie on the furniture or fittings of the library
+      or on the floor thereof.
+  - questionInfo: What is 2 + 2?
+    questionType: 0
+    questionImage: {fileID: 0}
+    audioClip: {fileID: 0}
+    videoClip: {fileID: 0}
+    options:
+    - 4
+    - 8
+    - 22
+    - dds
+    correctAns: 4
+  - questionInfo: fddg
+    questionType: 0
+    questionImage: {fileID: 0}
+    audioClip: {fileID: 0}
+    videoClip: {fileID: 0}
+    options:
+    - correcto
+    - dgd
+    - dgd
+    - dgd
+    correctAns: correcto
+  - questionInfo: hydffdh
+    questionType: 0
+    questionImage: {fileID: 0}
+    audioClip: {fileID: 0}
+    videoClip: {fileID: 0}
+    options:
+    - yes
+    - sfdf
+    - fggfgf
+    - fgfg
+    correctAns: yes

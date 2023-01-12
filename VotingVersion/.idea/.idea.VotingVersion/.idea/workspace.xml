@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="341bc7d0-a866-4d0f-9f05-a0c07b718265" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Resources/VotingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Resources/VotingData.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673557873249</updated>
       <workItem from="1673557878976" duration="36000" />
-      <workItem from="1673558132126" duration="360000" />
+      <workItem from="1673558132126" duration="1081000" />
     </task>
     <servers />
   </component>

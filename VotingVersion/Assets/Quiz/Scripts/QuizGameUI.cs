@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -120,15 +121,20 @@ public class QuizGameUI : MonoBehaviour
         //shuffle the list of options
         List<Sprite> ansOptions = ShuffleList.ShuffleListItems(listOptions);
 
+        
+        Image qImage = GameObject.Find("Qimage").GetComponent<Image>();
+        
         //assign options to respective option buttons
-        for (int i = 0; i < options.Count; i++)
+        for (int i = 0; i < ansOptions.Count; i++)
         {
             //set the child text
             options[i].GetComponentInChildren<Text>().text = "";
             options[i].name = ansOptions[i].name;    //set the name of button
 
-            //taken out if you don't want the answers shuffled.
-            options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
+            //take out if you don't want the answers shuffled.
+            //options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
+            
+            qImage.sprite = ansOptions[i];
         }
 
         answered = false;                       

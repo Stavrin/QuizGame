@@ -181,15 +181,23 @@ public class QuizGameUI : MonoBehaviour
                 //get the bool value
                 bool val = quizManager.Answer(btn);
 
+                //btn.GetComponent<Animator>().PlayInFixedTime("Pressed");
+
+                
+
                 //if its true
                 if (val)
                 {
+                    //btn.GetComponent<Animator>().Play("Normal");
+
                     //set color to correct
                     //btn.image.color = correctCol;
                     StartCoroutine(BlinkImg(btn.image));
                 }
                 else
                 {
+                    //btn.GetComponent<Animator>().Play("Normal");
+
                     //else set it to wrong color
                     btn.image.color = wrongCol;
                 }

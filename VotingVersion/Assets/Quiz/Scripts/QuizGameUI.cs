@@ -178,21 +178,13 @@ public class QuizGameUI : MonoBehaviour
             {
                 //set answered true
                 answered = true;
-                //get the bool value
+                //get the bool value, if val is true answer is correct
                 bool val = quizManager.Answer(btn);
 
-                //if its true
-                if (val)
-                {
-                    //set color to correct
-                    //btn.image.color = correctCol;
-                    StartCoroutine(BlinkImg(btn.image));
-                }
-                else
-                {
-                    //else set it to wrong color
-                    btn.image.color = wrongCol;
-                }
+
+
+                    StartCoroutine(BlinkImg(btn.image, val));
+                    
             }
         }
     }
@@ -245,14 +237,20 @@ public class QuizGameUI : MonoBehaviour
     }
 
     //this give blink effect [if needed use or dont use]
-    IEnumerator BlinkImg(Image img)
+    IEnumerator BlinkImg(Image img, bool correct)
     {
         for (int i = 0; i < 2; i++)
         {
             img.color = Color.white;
             yield return new WaitForSeconds(0.1f);
-            img.color = correctCol;
+
+            if (correct) 
+                img.color = correctCol;
+            else
+                img.color = wrongCol;
+            
             yield return new WaitForSeconds(0.1f);
+            img.color = Color.white;
         }
     }
 

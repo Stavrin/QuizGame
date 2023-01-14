@@ -120,27 +120,34 @@ public class JsonManager : MonoBehaviour
         //in, would make it able to expand or shrink, need at least 1 question, if 0 questions could make warning appear
         //in debug log.
 
-        if (data[0].question == quiz[0].questions[0].questionInfo)
+        //loop through each question and see if it's all there, if not do the json deserialize again.
+
+        for (int i = 0; i < quiz[0].questions.Count; i++)
         {
+            if (data[i].question == quiz[0].questions[i].questionInfo)
+            {
 
 
-            if (quiz[0].questions.Count < data.Length)
-                quiz[0].questions.AddRange(new Question[data.Length - 1]);
+                if (quiz[0].questions.Count < data.Length)
+                    quiz[0].questions.AddRange(new Question[data.Length - 1]);
             
-            if (!(quiz[0].questions[0].questionInfo == null))
-                StartCoroutine(AddData(5f, data));
+                if (!(quiz[0].questions[i].questionInfo == null))
+                    StartCoroutine(AddData(5f, data));
+                else
+                {
+                    Debug.LogError("list error, try again.");
+                    Invoke("CheckForImportRequestEnd", 1.0f);
+                }
+            }
             else
             {
+                //CheckForImportRequestEnd(); //try again if data is not synced.
                 Debug.LogError("list error, try again.");
                 Invoke("CheckForImportRequestEnd", 1.0f);
             }
+
         }
-        else
-        {
-            //CheckForImportRequestEnd(); //try again if data is not synced.
-            Debug.LogError("list error, try again.");
-            Invoke("CheckForImportRequestEnd", 1.0f);
-        }
+
 
 
 

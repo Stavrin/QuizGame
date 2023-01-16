@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Assertions.Must;
 
 public class QuizGameUI : MonoBehaviour
 {
@@ -20,8 +21,10 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private AudioSource questionAudio;             //audio source for audio clip
     [SerializeField] private Text questionInfoText;                 //text to show question
     [SerializeField] private List<Button> options;                  //options button reference
+    [SerializeField] private List<Image> Qimages;
+    [SerializeField] private List<Image> Aimages;
 
-    
+
 #pragma warning restore 649
 
     private float audioLength;          //store audio length
@@ -29,7 +32,9 @@ public class QuizGameUI : MonoBehaviour
     private bool answered = false;      //bool to keep track if answered or not
 
     private List<Sprite> ansOptions;
-    private Image[] qImage = new Image[3];
+    private List<Image> qImage;
+    private List<Image> aImage;
+
     private int iD = 0;
 
     public Text TimerText { get => timerText; }                     //getter
@@ -65,7 +70,10 @@ public class QuizGameUI : MonoBehaviour
 
     private void Start()
     {
-        
+
+        qImage = new List<Image> (Qimages);
+        aImage = new List<Image>(Aimages);
+
         //add the listener to all the buttons
         for (int i = 0; i < options.Count; i++)
         {
@@ -94,7 +102,10 @@ public class QuizGameUI : MonoBehaviour
     {
         //set the question
         this.question = question;
-        //check for questionType
+        
+        
+
+
         switch (question.questionType)
         {
             case QuestionType.TEXT:
@@ -131,30 +142,52 @@ public class QuizGameUI : MonoBehaviour
         questionInfoText.text = question.questionInfo;                      //set the question text
 
         List<Sprite> listOptions = new List<Sprite>(question.options);
+        Sprite answerSprite = question.correctAns;
 
         //shuffle the list of options
-        ansOptions = ShuffleList.ShuffleListItems(listOptions);
+        // ansOptions = ShuffleList.ShuffleListItems(listOptions);
 
-        
-        
-        
+        ansOptions = listOptions;
+
+
+        //question.iD = 0;
+
+        for (int i = 0; i < aImage.Count; i++)
+        {
+            aImage[i].sprite = question.wrongAns;
+            //important for getting the correct answer in QuizManager
+            options[i].name = ansOptions[i].name;    //set the name of button
+
+            //Button go = qImage[i].GetComponentInParent<Button>();
+
+            if (options[i].name == question.correctAns.name)
+                aImage[i].sprite = answerSprite;
+
+        }
+
+
+
+
         //assign options to respective option buttons
         for (int i = 0; i < ansOptions.Count; i++)
         {
-            qImage[i] = GameObject.Find("Qimage" + i).GetComponentInChildren<Image>();
-            
+            //qImage[i] = GameObject.Find("Qimage" + i.ToString()).GetComponentInChildren<Image>();
+
             //set the child text
             //options[i].GetComponentInChildren<Text>().text = "";
-            
-            //important for getting the correct answer in QuizManager
-            options[i].name = ansOptions[i].name;    //set the name of button
-            
+
+
+
 
 
             //take out if you don't want the answers shuffled.
             //options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
-            
+
+
             qImage[i].sprite = ansOptions[i];
+
+
+
         }
 
         answered = false;                       
@@ -282,6 +315,8 @@ public class QuizGameUI : MonoBehaviour
             qImage[iD].transform.gameObject.SetActive(false);
             yield return new WaitForSeconds(3.0f);
             qImage[iD].transform.gameObject.SetActive(true);
+
+            //img.transform.Find("Qimage" + iD.ToString()).GetComponentInChildren<Image>().gameObject.SetActive(true);
 
 
 

@@ -166,6 +166,9 @@ public class Question
     public Sprite wrongAns;           //wrong option sprite
     
     public Sprite correctImage; //correct answer writing in image form.
+
+    public int iD;
+
     
 }
 

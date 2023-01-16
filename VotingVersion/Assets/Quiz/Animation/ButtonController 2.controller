@@ -260,7 +260,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Qimage0
+    path: Qimage1
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -273,7 +273,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2798006942
+      path: 3519087112
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -317,7 +317,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Qimage0
+    path: Qimage1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -336,7 +336,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Qimage0
+    path: Qimage1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -355,7 +355,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Qimage0
+    path: Qimage1
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -366,7 +366,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Qimage0
+    path: Qimage1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -376,7 +376,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Qimage0
+    path: Qimage1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -386,7 +386,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Qimage0
+    path: Qimage1
     classID: 224
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
@@ -423,7 +423,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ButtonController
+  m_Name: ButtonController 2
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Normal

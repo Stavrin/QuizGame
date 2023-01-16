@@ -100,6 +100,12 @@ public class QuizManager : MonoBehaviour
             correct = true;
             gameScore += 50;
             quizGameUI.ScoreText.text = "Score:" + gameScore;
+            
+
+            //important, how you find a child gameobject, you have to use transform.
+            selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuetion.correctAns;;
+            
+
         }
         else
         {
@@ -107,6 +113,8 @@ public class QuizManager : MonoBehaviour
             //Reduce Life
             lifesRemaining--;
             quizGameUI.ReduceLife(lifesRemaining);
+            
+            selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuetion.wrongAns;
 
             if (lifesRemaining == 0)
             {
@@ -152,8 +160,13 @@ public class Question
     public Sprite questionImage;        //image for Image Type
     public AudioClip audioClip;         //audio for audio type
     public UnityEngine.Video.VideoClip videoClip;   //video for video type
+    
     public Sprite[] options  = new Sprite[4];        //options to select
-    public Sprite correctAns;           //correct option
+    public Sprite correctAns;           //correct option sprite
+    public Sprite wrongAns;           //wrong option sprite
+    
+    public Sprite correctImage; //correct answer writing in image form.
+    
 }
 
 [System.Serializable]

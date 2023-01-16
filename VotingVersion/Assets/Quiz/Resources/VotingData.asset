@@ -24,6 +24,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
     - {fileID: 21300000, guid: 85583ad8b13ba9847a56071ee4d8a3d5, type: 3}
     correctAns: {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
+    wrongAns: {fileID: 21300000, guid: cc8e2f7347a2b494392e26ff831141a0, type: 3}
+    correctImage: {fileID: 21300000, guid: e2411ef382fa1d3468036b4ae8a953d9, type: 3}
   - questionInfo: Which bye-law is correct?
     questionType: 0
     questionImage: {fileID: 0}
@@ -34,6 +36,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
     - {fileID: 21300000, guid: 85583ad8b13ba9847a56071ee4d8a3d5, type: 3}
     correctAns: {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
+    wrongAns: {fileID: 21300000, guid: cc8e2f7347a2b494392e26ff831141a0, type: 3}
+    correctImage: {fileID: 21300000, guid: e2411ef382fa1d3468036b4ae8a953d9, type: 3}
   - questionInfo: Which bye-law is correct?
     questionType: 0
     questionImage: {fileID: 0}
@@ -44,13 +48,5 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
     - {fileID: 21300000, guid: 85583ad8b13ba9847a56071ee4d8a3d5, type: 3}
     correctAns: {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
-  - questionInfo: Which bye-law is correct?
-    questionType: 0
-    questionImage: {fileID: 0}
-    audioClip: {fileID: 0}
-    videoClip: {fileID: 0}
-    options:
-    - {fileID: 21300000, guid: 6669d26b4f969ac4a8907dd56b968573, type: 3}
-    - {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
-    - {fileID: 21300000, guid: 85583ad8b13ba9847a56071ee4d8a3d5, type: 3}
-    correctAns: {fileID: 21300000, guid: e73b387ef3bf1434db9fdc4bf5f99b5b, type: 3}
+    wrongAns: {fileID: 21300000, guid: cc8e2f7347a2b494392e26ff831141a0, type: 3}
+    correctImage: {fileID: 21300000, guid: e2411ef382fa1d3468036b4ae8a953d9, type: 3}

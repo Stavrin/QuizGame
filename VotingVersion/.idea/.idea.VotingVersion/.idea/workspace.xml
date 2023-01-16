@@ -2,12 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="341bc7d0-a866-4d0f-9f05-a0c07b718265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 2.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 2.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 3.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 3.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button2Controller.overrideController" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button2Controller.overrideController.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button3/Pressed.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button3/Pressed.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button3Controller.overrideController" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Button3Controller.overrideController.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Pressed.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/Dont Work/Pressed.anim.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VotingVersion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VotingVersion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Resources/VotingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Resources/VotingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/20/df727c4d/InvokableCallList.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/57/36c84f50/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/7c/03783be6/InvokableCall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/99/dcfb33b7/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/c6/57d0e8f7/UnityEventBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/fb/a17c9aea/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75633565436c42f0a6426b33f0132ade46a800/73/f0876fcf/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75633565436c42f0a6426b33f0132ade46a800/8d/7f43adf1/Delegate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75633565436c42f0a6426b33f0132ade46a800/aa/0ed435da/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Text.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,6 +116,8 @@
       <updated>1673557873249</updated>
       <workItem from="1673557878976" duration="36000" />
       <workItem from="1673558132126" duration="4192000" />
+      <workItem from="1673870804283" duration="6666000" />
+      <workItem from="1673878280381" duration="3836000" />
     </task>
     <servers />
   </component>
@@ -91,5 +128,12 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#QuizGameUI.SetQuestion" memberName="listOptions" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

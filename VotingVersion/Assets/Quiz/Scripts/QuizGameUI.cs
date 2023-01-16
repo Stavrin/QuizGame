@@ -28,6 +28,10 @@ public class QuizGameUI : MonoBehaviour
     private Question question;          //store current question data
     private bool answered = false;      //bool to keep track if answered or not
 
+    private List<Sprite> ansOptions;
+    private Image[] qImage = new Image[3];
+    private int iD = 0;
+
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
     public GameObject GameOverPanel { get => gameOverPanel; }                     //getter
@@ -54,15 +58,25 @@ public class QuizGameUI : MonoBehaviour
 
         //Set this to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
        // DontDestroyOnLoad(gameObject);
+       
+       
     }
+
 
     private void Start()
     {
-        //add the listner to all the buttons
+        
+        //add the listener to all the buttons
         for (int i = 0; i < options.Count; i++)
         {
+            
             Button localBtn = options[i];
-            localBtn.onClick.AddListener(() => OnClick(localBtn));
+
+            iD = i;
+
+            //localBtn.name = localBtn.name + i; //to make an id number for each button
+            
+            localBtn.onClick.AddListener(() => OnClick(localBtn, iD));
         }
 
         //Invoke("CreateCategoryButtons", 5.0f);
@@ -119,22 +133,28 @@ public class QuizGameUI : MonoBehaviour
         List<Sprite> listOptions = new List<Sprite>(question.options);
 
         //shuffle the list of options
-        List<Sprite> ansOptions = ShuffleList.ShuffleListItems(listOptions);
+        ansOptions = ShuffleList.ShuffleListItems(listOptions);
 
         
-        Image qImage = GameObject.Find("Qimage").GetComponent<Image>();
+        
         
         //assign options to respective option buttons
         for (int i = 0; i < ansOptions.Count; i++)
         {
+            qImage[i] = GameObject.Find("Qimage" + i).GetComponentInChildren<Image>();
+            
             //set the child text
-            options[i].GetComponentInChildren<Text>().text = "";
+            //options[i].GetComponentInChildren<Text>().text = "";
+            
+            //important for getting the correct answer in QuizManager
             options[i].name = ansOptions[i].name;    //set the name of button
+            
+
 
             //take out if you don't want the answers shuffled.
             //options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
             
-            qImage.sprite = ansOptions[i];
+            qImage[i].sprite = ansOptions[i];
         }
 
         answered = false;                       
@@ -175,7 +195,7 @@ public class QuizGameUI : MonoBehaviour
     /// Method assigned to the buttons
     /// </summary>
     /// <param name="btn">ref to the button object</param>
-    void OnClick(Button btn)
+    void OnClick(Button btn, int ButtonID)
     {
         if (quizManager.GameStatus == GameStatus.PLAYING)
         {
@@ -187,9 +207,9 @@ public class QuizGameUI : MonoBehaviour
                 //get the bool value, if val is true answer is correct
                 bool val = quizManager.Answer(btn);
 
+                // wait 3 seconds around here.
 
-
-                    StartCoroutine(BlinkImg(btn.image, val));
+                    StartCoroutine(BlinkImg(btn.image, val, ButtonID));
                     
             }
         }
@@ -243,7 +263,7 @@ public class QuizGameUI : MonoBehaviour
     }
 
     //this give blink effect [if needed use or dont use]
-    IEnumerator BlinkImg(Image img, bool correct)
+    IEnumerator BlinkImg(Image img, bool correct, int iD)
     {
         for (int i = 0; i < 2; i++)
         {
@@ -256,7 +276,17 @@ public class QuizGameUI : MonoBehaviour
                 img.color = wrongCol;
             
             yield return new WaitForSeconds(0.1f);
-            img.color = Color.white;
+
+            img.color = Color.clear;
+
+            qImage[iD].transform.gameObject.SetActive(false);
+            yield return new WaitForSeconds(3.0f);
+            qImage[iD].transform.gameObject.SetActive(true);
+
+
+
+            //makes the answer image change.
+            //this.GetComponentInChildren<Image>().sprite = ansOptions.[i];
         }
     }
 

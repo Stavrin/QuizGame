@@ -325,19 +325,24 @@ public class QuizGameUI : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            img.color = Color.white;
-            yield return new WaitForSeconds(0.1f);
+            //qImage[iD].color = Color.white;
+            //img.color = Color.white;
+            yield return new WaitForSeconds(0.4f);
 
-            if (correct) 
-                img.color = correctCol;
-            else
-                img.color = wrongCol;
+           // if (correct) 
+                //qImage[iD].color = correctCol;
+                //img.color = correctCol;
+            //else
+                //qImage[iD].color = wrongCol;
+                //img.color = wrongCol;
             
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.4f);
 
-            img.color = Color.clear;
+            //img.color = Color.clear;
+            //qImage[iD].color = Color.clear;
 
             img.transform.Find("Qimage").gameObject.SetActive(false);
+            
             //yield return new WaitForSeconds(3.0f);
             //img.transform.Find("Qimage").gameObject.SetActive(true);
 
@@ -348,6 +353,8 @@ public class QuizGameUI : MonoBehaviour
             //makes the answer image change.
             //this.GetComponentInChildren<Image>().sprite = ansOptions.[i];
         }
+        
+
         
         Debug.Log(iD);
     }

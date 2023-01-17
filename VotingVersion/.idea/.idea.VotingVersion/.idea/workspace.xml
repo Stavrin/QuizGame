@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="341bc7d0-a866-4d0f-9f05-a0c07b718265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VotingVersion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VotingVersion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 2.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 3.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController 3.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Animation/ButtonController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +124,7 @@
       <workItem from="1673870804283" duration="6666000" />
       <workItem from="1673878280381" duration="3836000" />
       <workItem from="1673952620554" duration="1645000" />
-      <workItem from="1673954485380" duration="8396000" />
+      <workItem from="1673954485380" duration="10342000" />
     </task>
     <servers />
   </component>
@@ -140,10 +144,10 @@
           <line>251</line>
           <properties documentPath="C:\Users\da_pr\Documents\GitHub\QuizGame\VotingVersion\Assets\Quiz\Scripts\QuizGameUI.cs" initialLine="242" containingFunctionPresentation="method 'OnClick'">
             <startOffsets>
-              <option value="9204" />
+              <option value="9315" />
             </startOffsets>
             <endOffsets>
-              <option value="9239" />
+              <option value="9350" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />

@@ -96,11 +96,17 @@ public class JsonManager : MonoBehaviour
 
     private void CheckForImportRequestEnd()
     {
+        data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
+        
+        if (quiz[0].questions.Count < data.Length)
+            quiz[0].questions.AddRange(new Question[data.Length - 1]);
+        
+        Invoke("WaitForData", 3.0f);
         //if (_webRequest != null && _webRequest.isDone)
         //{
 
         //GDocResponse[] data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
-        data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
+  
 
 
 
@@ -122,15 +128,22 @@ public class JsonManager : MonoBehaviour
 
         //loop through each question and see if it's all there, if not do the json deserialize again.
 
-        for (int i = 0; i < quiz[0].questions.Count; i++)
+    }
+
+
+    void WaitForData()
+    {
+        
+
+        
+            for (int i = 0; i < quiz[0].questions.Count; i++)
         {
             if (data[i].question == quiz[0].questions[i].questionInfo)
             {
 
 
-                if (quiz[0].questions.Count < data.Length)
-                    quiz[0].questions.AddRange(new Question[data.Length - 1]);
-            
+
+                
                 if (!(quiz[0].questions[i].questionInfo == null))
                     StartCoroutine(AddData(5f, data));
                 else
@@ -147,12 +160,11 @@ public class JsonManager : MonoBehaviour
             }
 
         }
-
-
-
-
-
+        
+        
     }
+
+
     
     void HandleLog(string logString, string stackTrace, LogType type) {
         

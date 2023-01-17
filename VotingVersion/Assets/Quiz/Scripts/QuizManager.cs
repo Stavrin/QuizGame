@@ -19,15 +19,15 @@ public class QuizManager : MonoBehaviour
     //questions data
     private List<Question> questions;
     //current question data
-    private Question selectedQuetion = new Question();
+    private Question selectedQuestion = new Question();
     private int gameScore;
-    private int lifesRemaining;
+    private int livesRemaining;
     private float currentTime;
     private QuizDataScriptable dataScriptable;
 
     private GameStatus gameStatus = GameStatus.NEXT;
 
-    public GameStatus GameStatus { get { return gameStatus; } }
+    public GameStatus GameStatus { get { return gameStatus; } } //public getter.
 
     public List<QuizDataScriptable> QuizData { get => quizDataList; }
 
@@ -36,7 +36,7 @@ public class QuizManager : MonoBehaviour
         currentCategory = category;
         correctAnswerCount = 0;
         gameScore = 0;
-        lifesRemaining = 3;
+        livesRemaining = 3;
         currentTime = timeInSeconds;
         //set the questions data
         questions = new List<Question>();
@@ -54,12 +54,12 @@ public class QuizManager : MonoBehaviour
     {
         //get the random number
         int val = UnityEngine.Random.Range(0, questions.Count);
-        //set the selectedQuetion
-        selectedQuetion = questions[val];
+        //set the selectedQuestion
+        selectedQuestion = questions[val];
         //send the question to quizGameUI
-        quizGameUI.SetQuestion(selectedQuetion);
+        quizGameUI.SetQuestion(selectedQuestion);
 
-        questions.RemoveAt(val);
+        questions.RemoveAt(val); //remove the question so it doesn't show again during this game.
     }
 
     private void Update()
@@ -84,7 +84,7 @@ public class QuizManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Method called to check the answer is correct or not
+    /// Method called to check if the answer is correct or not
     /// </summary>
     /// <param name="selectedOption">answer string</param>
     /// <returns></returns>
@@ -92,8 +92,8 @@ public class QuizManager : MonoBehaviour
     {
         //set default to false
         bool correct = false;
-        //if selected answer is similar to the correctAns
-        if (selectedQuetion.correctAns.name == selectedOption.name)
+        //if selected answer is the same as the correctAns
+        if (selectedQuestion.correctAns.name == selectedOption.name)
         {
             //Yes, Ans is correct
             correctAnswerCount++;
@@ -103,7 +103,7 @@ public class QuizManager : MonoBehaviour
             
 
             //important, how you find a child gameobject, you have to use transform.
-            selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuetion.correctAns;;
+            //selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuestion.correctAns;;
             
 
         }
@@ -111,31 +111,44 @@ public class QuizManager : MonoBehaviour
         {
             //No, Ans is wrong
             //Reduce Life
-            lifesRemaining--;
-            quizGameUI.ReduceLife(lifesRemaining);
+            livesRemaining--;
+            quizGameUI.ReduceLife(livesRemaining);
             
-            selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuetion.wrongAns;
+            //selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuestion.wrongAns;
 
-            if (lifesRemaining == 0)
+            if (livesRemaining == 0)
             {
                 GameEnd();
             }
         }
 
+
+        return correct;
+
+
+    }
+
+    public void NextQuestion(bool correct)
+    {
         if (gameStatus == GameStatus.PLAYING)
         {
-            if (questions.Count > 0)
+            if (questions.Count > 0 && correct)
             {
-                //call SelectQuestion method again after 1s
-                Invoke("SelectQuestion", 0.4f);
+                //**change gamestatus to paused and pause timer
+                
+                //call SelectQuestion method again after 3s
+                Invoke("SelectQuestion", 3.0f);
             }
-            else
+            else if (questions.Count > 0)
+            {
+                quizGameUI.SetQuestion(selectedQuestion);
+            }
+
+            if (!(questions.Count > 0))
             {
                 GameEnd();
             }
         }
-        //return the value of correct bool
-        return correct;
     }
 
     private void GameEnd()
@@ -186,5 +199,6 @@ public enum QuestionType
 public enum GameStatus
 {
     PLAYING,
-    NEXT
+    NEXT,
+    PAUSE
 }

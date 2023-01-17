@@ -21,8 +21,8 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private AudioSource questionAudio;             //audio source for audio clip
     [SerializeField] private Text questionInfoText;                 //text to show question
     [SerializeField] private List<Button> options;                  //options button reference
-    [SerializeField] private List<Image> Qimages;
-    [SerializeField] private List<Image> Aimages;
+    [SerializeField] private List<Image> Qimages;                   //list of questioninfo images
+    [SerializeField] private List<Image> Aimages;                   //list of correct answer info images
 
 
 #pragma warning restore 649
@@ -142,7 +142,7 @@ public class QuizGameUI : MonoBehaviour
         questionInfoText.text = question.questionInfo;                      //set the question text
 
         List<Sprite> listOptions = new List<Sprite>(question.options);
-        Sprite answerSprite = question.correctAns;
+        Sprite answerSprite = question.correctImage;
 
         //shuffle the list of options
         // ansOptions = ShuffleList.ShuffleListItems(listOptions);
@@ -239,10 +239,11 @@ public class QuizGameUI : MonoBehaviour
                 answered = true;
                 //get the bool value, if val is true answer is correct
                 bool val = quizManager.Answer(btn);
+                
 
-                // wait 3 seconds around here.
-
-                    StartCoroutine(BlinkImg(btn.image, val, ButtonID));
+                    StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));
+                    
+                    quizManager.NextQuestion(val);
                     
             }
         }
@@ -312,9 +313,9 @@ public class QuizGameUI : MonoBehaviour
 
             img.color = Color.clear;
 
-            qImage[iD].transform.gameObject.SetActive(false);
+            img.transform.Find("Qimage").gameObject.SetActive(false);
             yield return new WaitForSeconds(3.0f);
-            qImage[iD].transform.gameObject.SetActive(true);
+            img.transform.Find("Qimage").gameObject.SetActive(true);
 
             //img.transform.Find("Qimage" + iD.ToString()).GetComponentInChildren<Image>().gameObject.SetActive(true);
 

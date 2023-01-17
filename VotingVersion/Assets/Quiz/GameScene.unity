@@ -1159,7 +1159,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505457346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 273bbb243fbf999448c566daed298bf0, type: 2}
   m_CullingMode: 0
@@ -1428,7 +1428,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564276195}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a3554d4571fb54d4f9c6f20c416f091e, type: 2}
   m_CullingMode: 0
@@ -2017,7 +2017,7 @@ GameObject:
   - component: {fileID: 1057191674}
   - component: {fileID: 1057191673}
   m_Layer: 5
-  m_Name: Qimage2
+  m_Name: Qimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2619,7 +2619,7 @@ GameObject:
   - component: {fileID: 1549155290}
   - component: {fileID: 1549155289}
   m_Layer: 5
-  m_Name: Qimage0
+  m_Name: Qimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2960,7 +2960,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574697651}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6b6062ce6fb030f4cb4c9eadd152b839, type: 2}
   m_CullingMode: 0
@@ -3209,7 +3209,7 @@ GameObject:
   - component: {fileID: 1644581597}
   - component: {fileID: 1644581596}
   m_Layer: 5
-  m_Name: Qimage1
+  m_Name: Qimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

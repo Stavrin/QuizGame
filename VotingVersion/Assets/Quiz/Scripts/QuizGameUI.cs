@@ -30,12 +30,13 @@ public class QuizGameUI : MonoBehaviour
     private float audioLength;          //store audio length
     private Question question;          //store current question data
     private bool answered = false;      //bool to keep track if answered or not
+    private bool chosen; //whether that option has been chosen already for the current question
 
     private List<Sprite> ansOptions;
     private List<Image> qImage;
     private List<Image> aImage;
 
-    //private int iD = 0;
+    //private int iD = 0; //this did not work because it was persisting beyond the method so was each iteration of loop it was changing.
 
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
@@ -96,7 +97,9 @@ public class QuizGameUI : MonoBehaviour
             localBtn.onClick.AddListener(() => OnClick(localBtn, iD));
             
         }
-        
+
+        chosen = false;
+
     }
     
 
@@ -111,8 +114,6 @@ public class QuizGameUI : MonoBehaviour
         this.question = question;
         
         
-
-
         switch (question.questionType)
         {
             case QuestionType.TEXT:
@@ -190,8 +191,9 @@ public class QuizGameUI : MonoBehaviour
 
             //take out if you don't want the answers shuffled.
             //options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
-
-            qImage[i].transform.gameObject.SetActive(true); //reactivate all question images for the new round.
+            
+            if(!chosen) //if option hasn't been chosen already.
+                qImage[i].transform.gameObject.SetActive(true); //reactivate all question images for the new round.
 
             qImage[i].sprite = ansOptions[i]; //question images for the next question are loaded.
 
@@ -249,13 +251,18 @@ public class QuizGameUI : MonoBehaviour
                 //get the bool value, if val is true answer is correct
                 bool val = quizManager.Answer(btn);
 
-                if(val) //if it's the right answer pause the timer while more info is shown
+                if (val) //if it's the right answer pause the timer while more info is shown
+                {
                     quizManager.gameStatus = GameStatus.PAUSE;
+
+                    ActivateOptionButtons(); //reactivate all options for next question.
+                }
                 else
                 {
+                    btn.onClick.RemoveAllListeners(); //take off listener. put back on next question.
                     //btn.transform.gameObject.SetActive(false); //stop it being possible to do the wrong answer more than once
-                    //take off listener? put back on next round?
-                    //yes then move that method from start to activate buttons new method, call that whenever new question.
+                    chosen = true;
+
                 }
                 
                 StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));

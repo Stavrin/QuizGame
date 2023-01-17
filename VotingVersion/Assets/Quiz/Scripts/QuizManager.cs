@@ -144,6 +144,8 @@ public class QuizManager : MonoBehaviour
                 //call SelectQuestion method again after 3s
                 Invoke("SelectQuestion", 3.0f);
                 
+                quizGameUI.ActivateOptionButtons();
+                
                 //gameStatus = GameStatus.PLAYING;
             }
             else if (questions.Count > 0)

@@ -78,12 +78,19 @@ public class QuizGameUI : MonoBehaviour
         ActivateOptionButtons();
 
         //Invoke("CreateCategoryButtons", 5.0f);
+        
+        
+        
+        
+        
         CreateCategoryButtons();
 
     }
 
-    void ActivateOptionButtons()
+    public void ActivateOptionButtons()
     {
+        chosen = false;
+        
         //add the listener to all the buttons
         for (int i = 0; i < options.Count; i++)
         {
@@ -98,7 +105,7 @@ public class QuizGameUI : MonoBehaviour
             
         }
 
-        chosen = false;
+        
 
     }
     
@@ -248,28 +255,41 @@ public class QuizGameUI : MonoBehaviour
             //if answered is false
             if (!answered)
             {
-                //set answered true
-                answered = true;
+                bool val = false;
+
                 //get the bool value, if val is true answer is correct
-                bool val = quizManager.Answer(btn);
+                val = quizManager.Answer(btn);
 
                 if (val) //if it's the right answer pause the timer while more info is shown
                 {
+                    
+                    //set answered to true only if it's the right answer
+                    answered = true;
+                    
                     quizManager.gameStatus = GameStatus.PAUSE;
 
-                    ActivateOptionButtons(); //reactivate all options for next question.
+                    //ActivateOptionButtons();ActivateOptionButtons(); //reactivate all options for next question.
+                    
+                    
+                    
+                    //btn.onClick.AddListener(() => OnClick(btn, 0));
                 }
                 else
                 {
                     btn.onClick.RemoveAllListeners(); //take off listener. put back on next question.
+                    
+                    
                     //btn.transform.gameObject.SetActive(false); //stop it being possible to do the wrong answer more than once
                     chosen = true;
 
                 }
                 
+                if(val) //only go to the next question if it was the correct answer.
+                    quizManager.NextQuestion(val);
+                
                 StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));
+                
                     
-                quizManager.NextQuestion(val);
                     
             }
         }
@@ -294,6 +314,8 @@ public class QuizGameUI : MonoBehaviour
 
 
                 StartCoroutine(ActivateButtons(0f));
+                
+                CategoryBtn(3, "Voting"); //to start the game without having to pick a category.
         }
         
         scrollHolder.SetActive(false);
@@ -325,11 +347,13 @@ public class QuizGameUI : MonoBehaviour
     //this give blink effect [if needed use or dont use]
     IEnumerator BlinkImg(Image img, bool correct, int iD)
     {
-        for (int i = 0; i < 2; i++)
-        {
+        //for (int i = 0; i < 2; i++) //the twice looping was good for blinking but was making me lose 2 lives in animation version.
+        //{
             //qImage[iD].color = Color.white;
             //img.color = Color.white;
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.8f);
+            
+            img.transform.Find("Qimage").gameObject.SetActive(false);
 
            // if (correct) 
                 //qImage[iD].color = correctCol;
@@ -337,13 +361,12 @@ public class QuizGameUI : MonoBehaviour
             //else
                 //qImage[iD].color = wrongCol;
                 //img.color = wrongCol;
-            
-            yield return new WaitForSeconds(0.4f);
+                
 
             //img.color = Color.clear;
             //qImage[iD].color = Color.clear;
 
-            img.transform.Find("Qimage").gameObject.SetActive(false);
+            
             
             //yield return new WaitForSeconds(3.0f);
             //img.transform.Find("Qimage").gameObject.SetActive(true);
@@ -354,7 +377,7 @@ public class QuizGameUI : MonoBehaviour
 
             //makes the answer image change.
             //this.GetComponentInChildren<Image>().sprite = ansOptions.[i];
-        }
+       // }
         
 
         

@@ -243,6 +243,8 @@ public class QuizGameUI : MonoBehaviour
     {
         if (quizManager.GameStatus == GameStatus.PLAYING)
         {
+            btn.GetComponent<Animator>().Play("Pressed"); //play button animation if gamestatus is playing.
+            
             //if answered is false
             if (!answered)
             {

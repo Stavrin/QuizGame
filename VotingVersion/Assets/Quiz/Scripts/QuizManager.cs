@@ -25,7 +25,7 @@ public class QuizManager : MonoBehaviour
     private float currentTime;
     private QuizDataScriptable dataScriptable;
 
-    private GameStatus gameStatus = GameStatus.NEXT;
+    public GameStatus gameStatus = GameStatus.NEXT;
 
     public GameStatus GameStatus { get { return gameStatus; } } //public getter.
 
@@ -52,6 +52,8 @@ public class QuizManager : MonoBehaviour
     /// </summary>
     private void SelectQuestion()
     {
+        gameStatus = GameStatus.PLAYING; //important that this is here to resume timer on next question.
+        
         //get the random number
         int val = UnityEngine.Random.Range(0, questions.Count);
         //set the selectedQuestion
@@ -69,6 +71,8 @@ public class QuizManager : MonoBehaviour
             currentTime -= Time.deltaTime;
             SetTime(currentTime);
         }
+        
+        
     }
 
     void SetTime(float value)
@@ -130,14 +134,17 @@ public class QuizManager : MonoBehaviour
 
     public void NextQuestion(bool correct)
     {
-        if (gameStatus == GameStatus.PLAYING)
+        if (gameStatus == GameStatus.PLAYING || gameStatus == GameStatus.PAUSE)
         {
             if (questions.Count > 0 && correct)
             {
-                //**change gamestatus to paused and pause timer
+                
+                //change gamestatus to paused and pause timer while displaying answer.
                 
                 //call SelectQuestion method again after 3s
                 Invoke("SelectQuestion", 3.0f);
+                
+                //gameStatus = GameStatus.PLAYING;
             }
             else if (questions.Count > 0)
             {

@@ -35,7 +35,7 @@ public class QuizGameUI : MonoBehaviour
     private List<Image> qImage;
     private List<Image> aImage;
 
-    private int iD = 0;
+    //private int iD = 0;
 
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
@@ -74,22 +74,29 @@ public class QuizGameUI : MonoBehaviour
         qImage = new List<Image> (Qimages);
         aImage = new List<Image>(Aimages);
 
+        ActivateOptionButtons();
+
+        //Invoke("CreateCategoryButtons", 5.0f);
+        CreateCategoryButtons();
+
+    }
+
+    void ActivateOptionButtons()
+    {
         //add the listener to all the buttons
         for (int i = 0; i < options.Count; i++)
         {
             
             Button localBtn = options[i];
 
-            iD = i;
+            int iD = i; //fixed this issue, needs to be local variable to work otherwise it kept being 2.
 
             //localBtn.name = localBtn.name + i; //to make an id number for each button
             
             localBtn.onClick.AddListener(() => OnClick(localBtn, iD));
+            
         }
-
-        //Invoke("CreateCategoryButtons", 5.0f);
-        CreateCategoryButtons();
-
+        
     }
     
 
@@ -154,14 +161,15 @@ public class QuizGameUI : MonoBehaviour
 
         for (int i = 0; i < aImage.Count; i++)
         {
-            aImage[i].sprite = question.wrongAns;
+            aImage[i].sprite = question.wrongAns; //all answer images set to the try again image.
+            
             //important for getting the correct answer in QuizManager
             options[i].name = ansOptions[i].name;    //set the name of button
 
             //Button go = qImage[i].GetComponentInParent<Button>();
 
             if (options[i].name == question.correctAns.name)
-                aImage[i].sprite = answerSprite;
+                aImage[i].sprite = answerSprite; //the correct answer set to the correct answer info image.
 
         }
 
@@ -183,8 +191,9 @@ public class QuizGameUI : MonoBehaviour
             //take out if you don't want the answers shuffled.
             //options[i].image.sprite = ansOptions[i]; //set button image to ansOptions image.
 
+            qImage[i].transform.gameObject.SetActive(true); //reactivate all question images for the new round.
 
-            qImage[i].sprite = ansOptions[i];
+            qImage[i].sprite = ansOptions[i]; //question images for the next question are loaded.
 
 
 
@@ -239,11 +248,19 @@ public class QuizGameUI : MonoBehaviour
                 answered = true;
                 //get the bool value, if val is true answer is correct
                 bool val = quizManager.Answer(btn);
-                
 
-                    StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));
+                if(val) //if it's the right answer pause the timer while more info is shown
+                    quizManager.gameStatus = GameStatus.PAUSE;
+                else
+                {
+                    //btn.transform.gameObject.SetActive(false); //stop it being possible to do the wrong answer more than once
+                    //take off listener? put back on next round?
+                    //yes then move that method from start to activate buttons new method, call that whenever new question.
+                }
+                
+                StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));
                     
-                    quizManager.NextQuestion(val);
+                quizManager.NextQuestion(val);
                     
             }
         }
@@ -314,8 +331,8 @@ public class QuizGameUI : MonoBehaviour
             img.color = Color.clear;
 
             img.transform.Find("Qimage").gameObject.SetActive(false);
-            yield return new WaitForSeconds(3.0f);
-            img.transform.Find("Qimage").gameObject.SetActive(true);
+            //yield return new WaitForSeconds(3.0f);
+            //img.transform.Find("Qimage").gameObject.SetActive(true);
 
             //img.transform.Find("Qimage" + iD.ToString()).GetComponentInChildren<Image>().gameObject.SetActive(true);
 
@@ -324,6 +341,8 @@ public class QuizGameUI : MonoBehaviour
             //makes the answer image change.
             //this.GetComponentInChildren<Image>().sprite = ansOptions.[i];
         }
+        
+        Debug.Log(iD);
     }
 
     public void RetryButton()

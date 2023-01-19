@@ -41,6 +41,8 @@ public class QuizGameUI : MonoBehaviour
     public Text TimerText { get => timerText; }                     //getter
     public Text ScoreText { get => scoreText; }                     //getter
     public GameObject GameOverPanel { get => gameOverPanel; }                     //getter
+
+    public GameObject StartPanel;
     
     public static QuizGameUI instance = null; //Needed as part of the functionality in Awake, so there can only be one instance. 
     
@@ -71,6 +73,9 @@ public class QuizGameUI : MonoBehaviour
 
     private void Start()
     {
+        
+        StartPanel.SetActive(false);
+        StartPanel.SetActive(true); //to stop a bug where the scene loads without the start button appearing properly.
 
         qImage = new List<Image> (Qimages);
         aImage = new List<Image>(Aimages);
@@ -248,6 +253,11 @@ public class QuizGameUI : MonoBehaviour
     /// <param name="btn">ref to the button object</param>
     void OnClick(Button btn, int ButtonID)
     {
+        if (quizManager.lifeLost)
+            quizManager.lifeLost = false;
+        
+        //if(quizManager.livesRemaining != 3 && quizManager.lifeLost)
+        
         if (quizManager.GameStatus == GameStatus.PLAYING)
         {
             btn.GetComponent<Animator>().Play("Pressed"); //play button animation if gamestatus is playing.
@@ -278,6 +288,7 @@ public class QuizGameUI : MonoBehaviour
                 {
                     btn.onClick.RemoveAllListeners(); //take off listener. put back on next question.
                     
+                    ReduceLife(quizManager.livesRemaining);
                     
                     //btn.transform.gameObject.SetActive(false); //stop it being possible to do the wrong answer more than once
                     chosen = true;
@@ -315,7 +326,7 @@ public class QuizGameUI : MonoBehaviour
 
                 StartCoroutine(ActivateButtons(0f));
                 
-                CategoryBtn(3, "Voting"); //to start the game without having to pick a category.
+                //CategoryBtn(3, "Voting"); //to start the game without having to pick a category.
         }
         
         scrollHolder.SetActive(false);
@@ -386,7 +397,18 @@ public class QuizGameUI : MonoBehaviour
 
     public void RetryButton()
     {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        //CategoryBtn(3, "Voting");
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void StartButton()
+    {
+        
+        CategoryBtn(3, "Voting");
+        
     }
     
     

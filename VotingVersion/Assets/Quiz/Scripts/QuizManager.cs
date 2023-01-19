@@ -21,9 +21,10 @@ public class QuizManager : MonoBehaviour
     //current question data
     private Question selectedQuestion = new Question();
     private int gameScore;
-    private int livesRemaining;
+    public int livesRemaining;
     private float currentTime;
     private QuizDataScriptable dataScriptable;
+    public bool lifeLost;
 
     public GameStatus gameStatus = GameStatus.NEXT;
 
@@ -113,16 +114,20 @@ public class QuizManager : MonoBehaviour
         }
         else
         {
-            //No, Ans is wrong
-            //Reduce Life
-            livesRemaining--;
-            quizGameUI.ReduceLife(livesRemaining);
+            if (!lifeLost)
+            {
+                //No, Ans is wrong
+                //Reduce Life
+                livesRemaining--;
+                //quizGameUI.ReduceLife(livesRemaining);
+
+                lifeLost = true;
+            }
             
-            //selectedOption.transform.Find("Aimage").GetComponentInChildren<Image>().sprite = selectedQuestion.wrongAns;
 
             if (livesRemaining == 0)
             {
-                GameEnd();
+                Invoke("GameEnd", 3.0f);
             }
         }
 
@@ -142,7 +147,7 @@ public class QuizManager : MonoBehaviour
                 //change gamestatus to paused and pause timer while displaying answer.
                 
                 //call SelectQuestion method again after 3s
-                Invoke("SelectQuestion", 3.0f);
+                Invoke("SelectQuestion", 5.0f);
                 
                 quizGameUI.ActivateOptionButtons();
                 
@@ -155,7 +160,8 @@ public class QuizManager : MonoBehaviour
 
             if (!(questions.Count > 0))
             {
-                GameEnd();
+                
+                Invoke("GameEnd", 5.0f);
             }
         }
     }

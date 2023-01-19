@@ -2,9 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="341bc7d0-a866-4d0f-9f05-a0c07b718265" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4correctopt1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4correctopt1.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4opt1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4opt1.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4opt2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4opt2.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4opt3.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question 4/q4opt3.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/Capture.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/Capture.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/Capture2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/Capture2.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/Capture3.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/Capture3.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/q2opt 3 correct.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question2/q2opt 3 correct.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capture21.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capture21.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capture22.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capture22.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capture23.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capture23.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capturecorrectq3opt2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Quiz/Images/question3/Capturecorrectq3opt2.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/WebGLTemplates.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/BetterMinimal.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/BetterMinimal/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/BetterMinimal/index.html.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/BetterMinimal/thumbnail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/BetterMinimal/thumbnail.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/JsonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/JsonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VotingVersion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VotingVersion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Resources/VotingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Resources/VotingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Resources/catvideo.mov" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quiz/Resources/catvideo.mov.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quiz/Scripts/QuizManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +119,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Windows\Json Quiz Tutorial.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\da_pr\Documents\GitHub\QuizGame\VotingVersion\Builds\Windows" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\da_pr\Documents\GitHub\QuizGame\VotingVersion -debugCodeOptimization" />
@@ -103,10 +153,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19232">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19232" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -128,6 +178,8 @@
       <workItem from="1673878280381" duration="3836000" />
       <workItem from="1673952620554" duration="1645000" />
       <workItem from="1673954485380" duration="17266000" />
+      <workItem from="1674074964896" duration="1019000" />
+      <workItem from="1674131215839" duration="3831000" />
     </task>
     <servers />
   </component>
@@ -140,23 +192,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Quiz/Scripts/QuizGameUI.cs</url>
-          <line>249</line>
-          <properties documentPath="C:\Users\da_pr\Documents\GitHub\QuizGame\VotingVersion\Assets\Quiz\Scripts\QuizGameUI.cs" initialLine="249" containingFunctionPresentation="method 'OnClick'">
-            <startOffsets>
-              <option value="9083" />
-            </startOffsets>
-            <endOffsets>
-              <option value="9084" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#QuizGameUI.SetQuestion" memberName="listOptions" />

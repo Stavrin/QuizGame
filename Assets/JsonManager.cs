@@ -101,7 +101,9 @@ public class JsonManager : MonoBehaviour
         if (quiz[0].questions.Count < data.Length)
             quiz[0].questions.AddRange(new Question[data.Length - 1]);
         
-        Invoke("WaitForData", 3.0f);
+        data = JsonHelper.FromJson<GDocResponse>(JsonTxt);
+        
+        Invoke("WaitForData", 5.0f);
         //if (_webRequest != null && _webRequest.isDone)
         //{
 

@@ -119,14 +119,24 @@ public class QuizManager : MonoBehaviour
                 //No, Ans is wrong
                 //Reduce Life
                 livesRemaining--;
-                //quizGameUI.ReduceLife(livesRemaining);
+                quizGameUI.ReduceLife(livesRemaining);
 
                 lifeLost = true;
+                
+                if(gameScore > 0)
+                    gameScore -= 50;
+                
+                quizGameUI.ScoreText.text = "Score:" + gameScore;
+                
             }
+            
+
             
 
             if (livesRemaining == 0)
             {
+                //deactivate all buttons here.
+                quizGameUI.DeActivateOptionButtons();
                 Invoke("GameEnd", 3.0f);
             }
         }
@@ -160,7 +170,7 @@ public class QuizManager : MonoBehaviour
 
             if (!(questions.Count > 0))
             {
-                
+                quizGameUI.DeActivateOptionButtons();
                 Invoke("GameEnd", 5.0f);
             }
         }

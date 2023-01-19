@@ -114,6 +114,47 @@ public class QuizGameUI : MonoBehaviour
 
     }
     
+    public void DeActivateOptionButtons()
+    {
+
+        //un-enable all the buttons
+        for (int i = 0; i < options.Count; i++)
+        {
+            
+            Button localBtn = options[i];
+            
+            localBtn.interactable = false;
+            localBtn.onClick.RemoveAllListeners();
+
+
+            
+        }
+
+        
+
+    }
+
+    private void ReActivateOptionButtons()
+    {
+        
+        chosen = false;
+        
+        //re-enable all the buttons
+        for (int i = 0; i < options.Count; i++)
+        {
+            
+            Button localBtn = options[i];
+            
+            localBtn.interactable = true;
+
+
+            
+        }
+
+
+
+    }
+    
 
     
     /// <summary>
@@ -254,8 +295,15 @@ public class QuizGameUI : MonoBehaviour
     void OnClick(Button btn, int ButtonID)
     {
         if (quizManager.lifeLost)
-            quizManager.lifeLost = false;
-        
+        {
+            //quizManager.lifeLost = false;
+        //    StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), false, ButtonID));
+            
+        StartCoroutine(ResetLife());
+            
+            return; //to overcome the fact that disabling a button effectively clicks it again.
+        }
+
         //if(quizManager.livesRemaining != 3 && quizManager.lifeLost)
         
         if (quizManager.GameStatus == GameStatus.PLAYING)
@@ -272,23 +320,26 @@ public class QuizGameUI : MonoBehaviour
 
                 if (val) //if it's the right answer pause the timer while more info is shown
                 {
-                    
+
                     //set answered to true only if it's the right answer
                     answered = true;
                     
                     quizManager.gameStatus = GameStatus.PAUSE;
 
-                    //ActivateOptionButtons();ActivateOptionButtons(); //reactivate all options for next question.
-                    
-                    
-                    
+                    ReActivateOptionButtons(); //reactivate all options for next question.
+
+
+
                     //btn.onClick.AddListener(() => OnClick(btn, 0));
                 }
                 else
                 {
-                    btn.onClick.RemoveAllListeners(); //take off listener. put back on next question.
                     
-                    ReduceLife(quizManager.livesRemaining);
+                    //btn.onClick.RemoveAllListeners(); //take off listener. put back on next question.
+
+                    btn.interactable= false;
+                    
+                    //ReduceLife(quizManager.livesRemaining);
                     
                     //btn.transform.gameObject.SetActive(false); //stop it being possible to do the wrong answer more than once
                     chosen = true;
@@ -298,7 +349,9 @@ public class QuizGameUI : MonoBehaviour
                 if(val) //only go to the next question if it was the correct answer.
                     quizManager.NextQuestion(val);
                 
+
                 StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));
+                //btn.GetComponentInChildren<Image>().transform.Find("Qimage").gameObject.SetActive(false);
                 
                     
                     
@@ -345,6 +398,17 @@ public class QuizGameUI : MonoBehaviour
 
 
     }
+
+    public IEnumerator ResetLife()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        quizManager.lifeLost = false;
+
+    }
+    
+    
     
 
     //Method called by Category Button
@@ -355,46 +419,51 @@ public class QuizGameUI : MonoBehaviour
         gamePanel.SetActive(true);              //activate game panel
     }
 
+
+
+    //this give blink effect [if needed use or dont use]
     //this give blink effect [if needed use or dont use]
     IEnumerator BlinkImg(Image img, bool correct, int iD)
     {
         //for (int i = 0; i < 2; i++) //the twice looping was good for blinking but was making me lose 2 lives in animation version.
         //{
-            //qImage[iD].color = Color.white;
-            //img.color = Color.white;
-            yield return new WaitForSeconds(0.8f);
+        //qImage[iD].color = Color.white;
+        //img.color = Color.white;
+        yield return new WaitForSeconds(0.8f);
             
-            img.transform.Find("Qimage").gameObject.SetActive(false);
+        img.transform.Find("Qimage").gameObject.SetActive(false);
+        
+        //if(quizManager.lifeLost)
+            //quizManager.lifeLost = false; 
 
-           // if (correct) 
-                //qImage[iD].color = correctCol;
-                //img.color = correctCol;
-            //else
-                //qImage[iD].color = wrongCol;
-                //img.color = wrongCol;
+        // if (correct) 
+        //qImage[iD].color = correctCol;
+        //img.color = correctCol;
+        //else
+        //qImage[iD].color = wrongCol;
+        //img.color = wrongCol;
                 
 
-            //img.color = Color.clear;
-            //qImage[iD].color = Color.clear;
+        //img.color = Color.clear;
+        //qImage[iD].color = Color.clear;
 
             
             
-            //yield return new WaitForSeconds(3.0f);
-            //img.transform.Find("Qimage").gameObject.SetActive(true);
+        //yield return new WaitForSeconds(3.0f);
+        //img.transform.Find("Qimage").gameObject.SetActive(true);
 
-            //img.transform.Find("Qimage" + iD.ToString()).GetComponentInChildren<Image>().gameObject.SetActive(true);
+        //img.transform.Find("Qimage" + iD.ToString()).GetComponentInChildren<Image>().gameObject.SetActive(true);
 
 
 
-            //makes the answer image change.
-            //this.GetComponentInChildren<Image>().sprite = ansOptions.[i];
-       // }
+        //makes the answer image change.
+        //this.GetComponentInChildren<Image>().sprite = ansOptions.[i];
+        // }
         
 
         
         Debug.Log(iD);
     }
-
     public void RetryButton()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

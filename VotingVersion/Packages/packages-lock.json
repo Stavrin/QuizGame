@@ -1,10 +1,12 @@
 {
   "dependencies": {
     "com.unity.collab-proxy": {
-      "version": "2.0.1",
+      "version": "1.17.7",
       "depth": 0,
       "source": "registry",
-      "dependencies": {},
+      "dependencies": {
+        "com.unity.services.core": "1.0.1"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
@@ -29,11 +31,7 @@
       }
     },
     "com.unity.ide.rider": {
-<<<<<<< Updated upstream
       "version": "3.0.16",
-=======
-      "version": "3.0.18",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -42,7 +40,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.17",
+      "version": "2.0.16",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -57,7 +55,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< Updated upstream
     "com.unity.services.core": {
       "version": "1.0.1",
       "depth": 1,
@@ -67,8 +64,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Stashed changes
     "com.unity.test-framework": {
       "version": "1.1.31",
       "depth": 0,

@@ -45,7 +45,6 @@ public class QuizGameUI : MonoBehaviour
     public GameObject StartPanel;
     
     public static QuizGameUI instance = null; //Needed as part of the functionality in Awake, so there can only be one instance. 
-    
 
     public static QuizGameUI GetInstance()
     {
@@ -73,6 +72,7 @@ public class QuizGameUI : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< Updated upstream:VotingVersion/Assets/Scripts/QuizGameUI.cs
         
         StartPanel.SetActive(false);
         StartPanel.SetActive(true); //to stop a bug where the scene loads without the start button appearing properly.
@@ -81,6 +81,18 @@ public class QuizGameUI : MonoBehaviour
         aImage = new List<Image>(Aimages);
 
         ActivateOptionButtons();
+=======
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false; //lock and hide mouse cursor
+
+        //add the listner to all the buttons
+        for (int i = 0; i < options.Count; i++)
+        {
+            Button localBtn = options[i];
+            localBtn.onClick.AddListener(() => OnClick(localBtn));
+        }
+>>>>>>> Stashed changes:VotingVersion/Assets/Quiz/Scripts/QuizGameUI.cs
 
         //Invoke("CreateCategoryButtons", 5.0f);
         

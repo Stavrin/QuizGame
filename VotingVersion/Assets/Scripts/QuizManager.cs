@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
@@ -22,7 +23,7 @@ public class QuizManager : MonoBehaviour
     private Question selectedQuestion = new Question();
     private int gameScore;
     public int livesRemaining;
-    private float currentTime;
+    public float currentTime;
     private QuizDataScriptable dataScriptable;
     public bool lifeLost;
 
@@ -65,6 +66,11 @@ public class QuizManager : MonoBehaviour
         questions.RemoveAt(val); //remove the question so it doesn't show again during this game.
     }
 
+    public void ResetTime()
+    {
+        currentTime = timeInSeconds;
+    }
+
     private void Update()
     {
         if (gameStatus == GameStatus.PLAYING)
@@ -84,7 +90,22 @@ public class QuizManager : MonoBehaviour
         if (currentTime <= 0)
         {
             //Game Over
-            GameEnd();
+            //GameEnd();
+
+            //instead lose a life and reset time
+            //currentTime = timeInSeconds;
+
+            gameStatus = GameStatus.PAUSE;
+            quizGameUI.GameOverPanel.SetActive(true);
+            quizGameUI.timeoutPanel.SetActive(true);
+
+            bool val = true;
+            lifeLost = false;
+            WrongAnswer();
+
+
+
+
         }
     }
 
@@ -114,36 +135,50 @@ public class QuizManager : MonoBehaviour
         }
         else
         {
-            if (!lifeLost)
-            {
-                //No, Ans is wrong
-                //Reduce Life
-                livesRemaining--;
-                quizGameUI.ReduceLife(livesRemaining);
 
-                lifeLost = true;
-                
-                if(gameScore > 0)
-                    gameScore -= 50;
-                
-                quizGameUI.ScoreText.text = "Score:" + gameScore;
-                
-            }
-            
+            WrongAnswer();
 
-            
-
-            if (livesRemaining == 0)
-            {
-                //deactivate all buttons here.
-                quizGameUI.DeActivateOptionButtons();
-                Invoke("GameEnd", 3.0f);
-            }
         }
 
 
         return correct;
 
+
+    }
+
+    public void WrongAnswer()
+    {
+        if (!lifeLost)
+        {
+            //No, Ans is wrong
+            LoseLife();
+
+        }
+
+
+
+
+        if (livesRemaining == 0)
+        {
+            //deactivate all buttons here.
+            quizGameUI.DeActivateOptionButtons();
+            Invoke("GameEnd", 3.0f);
+        }
+
+    }
+
+    private void LoseLife()
+    {
+        //Reduce Life
+        livesRemaining--;
+        quizGameUI.ReduceLife(livesRemaining);
+
+        lifeLost = true;
+
+        if (gameScore > 0)
+            gameScore -= 50;
+
+        quizGameUI.ScoreText.text = "Score:" + gameScore;
 
     }
 
@@ -180,12 +215,20 @@ public class QuizManager : MonoBehaviour
     {
         gameStatus = GameStatus.NEXT;
         quizGameUI.GameOverPanel.SetActive(true);
+        quizGameUI.retryPanel.SetActive(true);
 
         //fi you want to save only the highest score then compare the current score with saved score and if more save the new score
         //eg:- if correctAnswerCount > PlayerPrefs.GetInt(currentCategory) then call below line
 
         //Save the score
         PlayerPrefs.SetInt(currentCategory, correctAnswerCount); //save the score for this category
+
+        Invoke("Retry", 20.0f); //if 20 seconds pass and nothing clicked, reset.
+    }
+
+    private void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

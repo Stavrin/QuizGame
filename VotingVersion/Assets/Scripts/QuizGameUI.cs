@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Assertions.Must;
+using System;
 
 public class QuizGameUI : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private Text scoreText, timerText;
     [SerializeField] private List<Image> lifeImageList;
     [SerializeField] private GameObject gameOverPanel, mainMenu, gamePanel;
+
+    public GameObject timeoutPanel, welldonePanel, retryPanel;
+
+
     [SerializeField] private Color correctCol, wrongCol, normalCol; //color of buttons
     [SerializeField] private Image questionImg;                     //image component to show image
     [SerializeField] private UnityEngine.Video.VideoPlayer questionVideo;   //to show video
@@ -348,10 +353,12 @@ public class QuizGameUI : MonoBehaviour
                     chosen = true;
 
                 }
-                
-                if(val) //only go to the next question if it was the correct answer.
+
+                if (val) //only go to the next question if it was the correct answer.
+                {
+                    
                     quizManager.NextQuestion(val);
-                
+                }
 
                 StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));
                 //btn.GetComponentInChildren<Image>().transform.Find("Qimage").gameObject.SetActive(false);
@@ -474,6 +481,24 @@ public class QuizGameUI : MonoBehaviour
         //CategoryBtn(3, "Voting");
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public IEnumerator NextButton()
+    {
+
+        quizManager.gameStatus = GameStatus.PLAYING;
+        StartCoroutine(NextQuestion());
+        yield return NextQuestion();
+
+        quizManager.ResetTime();
+    }
+
+    public IEnumerator NextQuestion()
+    {
+        bool val = true;
+        quizManager.NextQuestion(val);
+        yield return new WaitForSeconds(0f);
+
     }
 
     public void StartButton()

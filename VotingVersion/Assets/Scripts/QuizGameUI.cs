@@ -74,7 +74,7 @@ public class QuizGameUI : MonoBehaviour
     private void Start()
     {
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; //lock and hide mouse cursor
 
         StartPanel.SetActive(false);

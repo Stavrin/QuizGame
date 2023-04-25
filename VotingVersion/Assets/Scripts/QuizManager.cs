@@ -230,6 +230,16 @@ public class QuizManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void NextButton()
+    {
+        bool val = true;
+        NextQuestion(val);
+
+        quizGameUI.NextQuestion();
+
+        ResetTime();
+    }
 }
 
 //Datastructure for storing the questions data

@@ -483,22 +483,13 @@ public class QuizGameUI : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public IEnumerator NextButton()
-    {
 
-        quizManager.gameStatus = GameStatus.PLAYING;
-        StartCoroutine(NextQuestion());
-        yield return NextQuestion();
-
-        quizManager.ResetTime();
-    }
 
     public IEnumerator NextQuestion()
     {
-        bool val = true;
-        quizManager.NextQuestion(val);
-        yield return new WaitForSeconds(0f);
 
+        yield return new WaitForSeconds(0f);
+        quizManager.gameStatus = GameStatus.PLAYING;
     }
 
     public void StartButton()

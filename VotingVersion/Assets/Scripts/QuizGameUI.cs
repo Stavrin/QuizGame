@@ -73,7 +73,10 @@ public class QuizGameUI : MonoBehaviour
 
     private void Start()
     {
-        
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false; //lock and hide mouse cursor
+
         StartPanel.SetActive(false);
         StartPanel.SetActive(true); //to stop a bug where the scene loads without the start button appearing properly.
 

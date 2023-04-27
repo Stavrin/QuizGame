@@ -27,6 +27,8 @@ public class QuizManager : MonoBehaviour
     private QuizDataScriptable dataScriptable;
     public bool lifeLost;
 
+    [SerializeField] private Animator anim;
+
     public GameStatus gameStatus = GameStatus.NEXT;
 
     public GameStatus GameStatus { get { return gameStatus; } } //public getter.
@@ -186,6 +188,8 @@ public class QuizManager : MonoBehaviour
     {
         if (gameStatus == GameStatus.PLAYING || gameStatus == GameStatus.PAUSE)
         {
+            anim.SetTrigger("Next");
+
             if (questions.Count > 0 && correct)
             {
                 
@@ -239,6 +243,8 @@ public class QuizManager : MonoBehaviour
         quizGameUI.NextQuestion();
 
         ResetTime();
+
+        //quizGameUI.GameOverPanel.SetActive(false);
     }
 }
 

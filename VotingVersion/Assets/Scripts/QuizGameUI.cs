@@ -334,9 +334,6 @@ public class QuizGameUI : MonoBehaviour
                     
                     quizManager.gameStatus = GameStatus.PAUSE;
 
-                    GameOverPanel.SetActive(true);
-                    welldonePanel.SetActive(true);
-
 
                     ReActivateOptionButtons(); //reactivate all options for next question.
 

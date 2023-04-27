@@ -169,6 +169,16 @@ public class QuizManager : MonoBehaviour
 
     }
 
+    public void RightAnswer()
+    {
+
+        gameStatus = GameStatus.PAUSE;
+        quizGameUI.GameOverPanel.SetActive(true);
+        quizGameUI.welldonePanel.SetActive(true);
+
+
+    }
+
     private void LoseLife()
     {
         //Reduce Life
@@ -190,38 +200,43 @@ public class QuizManager : MonoBehaviour
         {
             
 
-            if (questions.Count > 0 && correct)
+            if (questions.Count > 0 && !timeout)
             {
 
                 //change gamestatus to paused and pause timer while displaying answer.
 
                 //call SelectQuestion method again after 3s
-                if (!timeout)
-                {
+
                     
-                    Invoke("SelectQuestion", 5.0f);
-                }
+                    Invoke("RightAnswer", 5.0f);
 
-                else
+                    quizGameUI.ActivateOptionButtons();
+
+                if ((questions.Count - 1) == 0)
                 {
-
-                    SelectQuestion();
+                    quizGameUI.DeActivateOptionButtons();
+                    Invoke("GameEnd", 0.0f);
                 }
 
-                quizGameUI.ActivateOptionButtons();
-                
+
+
+
                 //gameStatus = GameStatus.PLAYING;
             }
-            else if (questions.Count > 0)
+
+            else if (questions.Count > 0 && timeout)
+            {
+
+                SelectQuestion();
+
+                quizGameUI.ActivateOptionButtons();
+            }
+
+            else if (questions.Count > 1)
             {
                 quizGameUI.SetQuestion(selectedQuestion);
             }
 
-            if (!(questions.Count > 0))
-            {
-                quizGameUI.DeActivateOptionButtons();
-                Invoke("GameEnd", 5.0f);
-            }
         }
     }
 
@@ -268,6 +283,7 @@ public class QuizManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         quizGameUI.GameOverPanel.SetActive(false);
+        quizGameUI.welldonePanel.SetActive(false);
         NextQuestion(val, timeout);
     }
 

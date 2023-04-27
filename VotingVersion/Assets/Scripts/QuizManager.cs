@@ -101,7 +101,7 @@ public class QuizManager : MonoBehaviour
             quizGameUI.GameOverPanel.SetActive(true);
             quizGameUI.timeoutPanel.SetActive(true);
 
-            bool val = true;
+            bool val = false;
             lifeLost = false;
             WrongAnswer();
 
@@ -237,6 +237,8 @@ public class QuizManager : MonoBehaviour
 
     public void NextButton()
     {
+        StartCoroutine("DelayedActive");
+
         bool val = true;
         NextQuestion(val);
 
@@ -244,8 +246,16 @@ public class QuizManager : MonoBehaviour
 
         ResetTime();
 
-        //quizGameUI.GameOverPanel.SetActive(false);
+
+
     }
+
+    IEnumerator DelayedActive()
+    {
+        yield return new WaitForSeconds(5.0f);
+        quizGameUI.GameOverPanel.SetActive(false);
+    }
+
 }
 
 //Datastructure for storing the questions data

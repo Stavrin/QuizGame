@@ -184,7 +184,7 @@ public class QuizManager : MonoBehaviour
 
     }
 
-    public void NextQuestion(bool correct)
+    public void NextQuestion(bool correct, bool timeout)
     {
         if (gameStatus == GameStatus.PLAYING || gameStatus == GameStatus.PAUSE)
         {
@@ -192,12 +192,18 @@ public class QuizManager : MonoBehaviour
 
             if (questions.Count > 0 && correct)
             {
-                
+
                 //change gamestatus to paused and pause timer while displaying answer.
-                
+
                 //call SelectQuestion method again after 3s
-                Invoke("SelectQuestion", 5.0f);
-                
+                if (!timeout)
+                {
+                    Invoke("SelectQuestion", 5.0f);
+                }
+
+                else
+                    Invoke("SelectQuestion", 1.0f);
+
                 quizGameUI.ActivateOptionButtons();
                 
                 //gameStatus = GameStatus.PLAYING;
@@ -235,12 +241,12 @@ public class QuizManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void NextButton()
+    public void NextButton(bool timeout)
     {
         StartCoroutine("DelayedActive");
 
         bool val = true;
-        NextQuestion(val);
+        NextQuestion(val, timeout);
 
         quizGameUI.NextQuestion();
 

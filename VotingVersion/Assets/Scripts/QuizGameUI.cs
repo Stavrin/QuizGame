@@ -334,6 +334,10 @@ public class QuizGameUI : MonoBehaviour
                     
                     quizManager.gameStatus = GameStatus.PAUSE;
 
+                    GameOverPanel.SetActive(true);
+                    welldonePanel.SetActive(true);
+
+
                     ReActivateOptionButtons(); //reactivate all options for next question.
 
 
@@ -356,8 +360,8 @@ public class QuizGameUI : MonoBehaviour
 
                 if (val) //only go to the next question if it was the correct answer.
                 {
-                    
-                    quizManager.NextQuestion(val);
+                    bool timeout = false;
+                    quizManager.NextQuestion(val, timeout);
                 }
 
                 StartCoroutine(BlinkImg(btn.GetComponentInChildren<Image>(), val, ButtonID));

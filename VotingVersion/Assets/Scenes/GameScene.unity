@@ -834,7 +834,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 13
+  m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!1 &329420800
 GameObject:
@@ -2003,7 +2003,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!1 &664290786
 GameObject:
@@ -2583,7 +2583,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 13
   m_TargetDisplay: 0
 --- !u!114 &861088539
 MonoBehaviour:
@@ -5596,7 +5596,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 12
   m_TargetDisplay: 0
 --- !u!114 &1834376282
 MonoBehaviour:
@@ -6377,6 +6377,7 @@ MonoBehaviour:
   - {fileID: 1802196544}
   - {fileID: 50377704}
   - {fileID: 1784290395}
+  quesNum: 0
   StartPanel: {fileID: 1712965297}
 --- !u!1 &2071033730
 GameObject:

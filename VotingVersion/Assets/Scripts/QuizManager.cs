@@ -91,11 +91,8 @@ public class QuizManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            //Game Over
-            //GameEnd();
 
-            //instead lose a life and reset time
-            //currentTime = timeInSeconds;
+            //lose a life and reset time
 
             gameStatus = GameStatus.PAUSE;
             quizGameUI.GameOverPanel.SetActive(true);
@@ -164,17 +161,35 @@ public class QuizManager : MonoBehaviour
         {
             //deactivate all buttons here.
             quizGameUI.DeActivateOptionButtons();
-            Invoke("GameEnd", 3.0f);
+
+            //quizGameUI.timeoutPanel.SetActive(false);
+            //StartCoroutine("DelayEnd");
+            GameEnd("Out of lives!");
         }
 
+    }
+
+    private IEnumerator DelayEnd()
+    {
+        yield return new WaitForSeconds(1.0f);
+        GameEnd("Out of lives!");
     }
 
     public void RightAnswer()
     {
 
+
         gameStatus = GameStatus.PAUSE;
         quizGameUI.GameOverPanel.SetActive(true);
         quizGameUI.welldonePanel.SetActive(true);
+
+        if (quizGameUI.quesNum == 4) //if you got the last question right that's the end of the quiz
+        {
+            quizGameUI.welldonePanel.SetActive(false);
+            GameEnd("Quiz Completed");
+        }
+
+
 
 
     }
@@ -200,7 +215,7 @@ public class QuizManager : MonoBehaviour
         {
             
 
-            if (questions.Count > 0 && !timeout)
+            if (questions.Count >= 0 && !timeout)
             {
 
                 //change gamestatus to paused and pause timer while displaying answer.
@@ -212,10 +227,10 @@ public class QuizManager : MonoBehaviour
 
                     quizGameUI.ActivateOptionButtons();
 
-                if ((questions.Count - 1) == 0)
+                if (quizGameUI.quesNum == 5)
                 {
                     quizGameUI.DeActivateOptionButtons();
-                    Invoke("GameEnd", 0.0f);
+                    GameEnd("Quiz Completed");
                 }
 
 
@@ -240,11 +255,13 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    private void GameEnd()
+    public void GameEnd(string gameOver)
     {
         gameStatus = GameStatus.NEXT;
         quizGameUI.GameOverPanel.SetActive(true);
         quizGameUI.retryPanel.SetActive(true);
+
+        quizGameUI.retryPanel.GetComponentInChildren<Text>().text = gameOver;
 
         //fi you want to save only the highest score then compare the current score with saved score and if more save the new score
         //eg:- if correctAnswerCount > PlayerPrefs.GetInt(currentCategory) then call below line

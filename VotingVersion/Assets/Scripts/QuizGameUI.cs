@@ -29,7 +29,7 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private List<Image> Qimages;                   //list of questioninfo images
     [SerializeField] private List<Image> Aimages;                   //list of correct answer info images
 
-    private int quesNum = 0;
+    public int quesNum = 0;
 
     private float audioLength;          //store audio length
     private Question question;          //store current question data

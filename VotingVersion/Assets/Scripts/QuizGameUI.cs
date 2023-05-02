@@ -13,7 +13,7 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private QuizManager quizManager;               //ref to the QuizManager script
     [SerializeField] private CategoryBtnScript categoryBtnPrefab;
     [SerializeField] private GameObject scrollHolder;
-    [SerializeField] private Text scoreText, timerText;
+    [SerializeField] private Text scoreText, timerText, numQuestions;
     [SerializeField] private List<Image> lifeImageList;
     [SerializeField] private GameObject gameOverPanel, mainMenu, gamePanel;
 
@@ -29,8 +29,7 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private List<Image> Qimages;                   //list of questioninfo images
     [SerializeField] private List<Image> Aimages;                   //list of correct answer info images
 
-
-#pragma warning restore 649
+    private int quesNum = 0;
 
     private float audioLength;          //store audio length
     private Question question;          //store current question data
@@ -173,8 +172,14 @@ public class QuizGameUI : MonoBehaviour
     {
         //set the question
         this.question = question;
-        
-        
+
+        quesNum++;
+
+        //show question number
+        numQuestions.text = "Question " + quesNum + " of 4";
+
+
+
         switch (question.questionType)
         {
             case QuestionType.TEXT:

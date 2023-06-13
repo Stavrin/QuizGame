@@ -1,0 +1,8 @@
+
+cd c:/Kiosk
+
+git config --global credential.helper '!f() { echo "password=<your_access_token>"; }; f'
+
+git clone git://github.com/username/repository.git
+
+git remote set-url origin git@github.com:username/repository.git

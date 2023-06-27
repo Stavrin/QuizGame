@@ -7,8 +7,10 @@ git pull
 
 timeout /t 10
 
-cd "%USERPROFILE%\Bristol Culture\AppData\Local\Programs\Servez\"
-start "" servez.exe -- --port=1234 c:/Kiosk\QuizGame\Builds
+cd %USERPROFILE%\AppData\Local\Programs\Servez\
+start "" /min servez.exe -- --port=1234 c:/Kiosk\QuizGame\Builds
+
+timeout /t 5
 
 taskkill /F /IM chrome.exe
 

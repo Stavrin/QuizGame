@@ -1354,6 +1354,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,6 +1702,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &590745819
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,6 +4555,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1578857864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5955,7 +5958,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 63be080cea79d3b478d96bfb0b7287a0, type: 2}
   - {fileID: 11400000, guid: 1b526a90754517b45a4f3dfa7ee9bebd, type: 2}
   - {fileID: 11400000, guid: 3f20b618ebb9b98498afa476f6bbd862, type: 2}
-  timeInSeconds: 15
+  timeInSeconds: 45
   livesRemaining: 0
   currentTime: 0
   lifeLost: 0
@@ -6182,6 +6185,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2028903503
 GameObject:
   m_ObjectHideFlags: 0

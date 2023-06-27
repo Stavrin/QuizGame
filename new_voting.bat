@@ -1,6 +1,13 @@
 @echo off
 
-cd "c:\Users\Bristol Culture\AppData\Local\Programs\Servez\"
+:: Fetch and pull new commits
+cd "c:/Kiosk\QuizGame"
+git fetch
+git pull
+
+timeout /t 10
+
+cd "%USERPROFILE%\Bristol Culture\AppData\Local\Programs\Servez\"
 start "" servez.exe -- --port=1234 c:/Kiosk\QuizGame\Builds
 
 taskkill /F /IM chrome.exe

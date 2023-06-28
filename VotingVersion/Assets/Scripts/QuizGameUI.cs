@@ -8,7 +8,7 @@ using UnityEngine.Assertions.Must;
 using System;
 
 public class QuizGameUI : MonoBehaviour
-{
+{ 
 #pragma warning disable 649
     [SerializeField] private QuizManager quizManager;               //ref to the QuizManager script
     [SerializeField] private CategoryBtnScript categoryBtnPrefab;
@@ -18,6 +18,9 @@ public class QuizGameUI : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel, mainMenu, gamePanel;
 
     public GameObject timeoutPanel, welldonePanel, retryPanel;
+
+    private float timer = 20f;
+    private bool panelActive = true;
 
 
     [SerializeField] private Color correctCol, wrongCol, normalCol; //color of buttons
@@ -39,6 +42,8 @@ public class QuizGameUI : MonoBehaviour
     private List<Sprite> ansOptions;
     private List<Image> qImage;
     private List<Image> aImage;
+
+    private WaitForSeconds delay = new WaitForSeconds(1);
 
     //private int iD = 0; //this did not work because it was persisting beyond the method so was each iteration of loop it was changing.
 
@@ -504,7 +509,29 @@ public class QuizGameUI : MonoBehaviour
         CategoryBtn(3, "Voting");
         
     }
-    
-    
 
-}
+    public void OnNextQuestionPanelAppear()
+    {
+        StartCoroutine(MonitorButton());
+    }
+
+    private IEnumerator MonitorButton()
+    {
+
+
+        yield return delay;
+
+
+        while (timer > 0)
+        {
+
+            timer--;
+
+            yield return delay;
+        }
+
+        RetryButton();
+
+    }
+
+}//class end

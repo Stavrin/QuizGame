@@ -15,6 +15,7 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private float timeInSeconds;
 #pragma warning restore 649
 
+    public CanvasController canv;
     private string currentCategory = "";
     private int correctAnswerCount = 0;
     //questions data
@@ -186,7 +187,9 @@ public class QuizManager : MonoBehaviour
         if (quizGameUI.quesNum == 4) //if you got the last question right that's the end of the quiz
         {
             quizGameUI.welldonePanel.SetActive(false);
-            GameEnd("Quiz Completed");
+            GameEnd("Quiz Completed - Well Done, you must be a true Bristolian!");
+            quizGameUI.GameOverPanel.GetComponentInChildren<ParticleSystem>().Play();
+            canv.EndGame();
         }
 
 
@@ -230,7 +233,10 @@ public class QuizManager : MonoBehaviour
                 if (quizGameUI.quesNum == 5)
                 {
                     quizGameUI.DeActivateOptionButtons();
-                    GameEnd("Quiz Completed");
+                    GameEnd("Quiz Completed - Well Done, you must be a true Bristolian!");
+                    quizGameUI.GameOverPanel.GetComponentInChildren<ParticleSystem>().Play();
+                    canv.EndGame();
+
                 }
 
 
@@ -269,7 +275,7 @@ public class QuizManager : MonoBehaviour
         //Save the score
         PlayerPrefs.SetInt(currentCategory, correctAnswerCount); //save the score for this category
 
-        Invoke("Retry", 20.0f); //if 20 seconds pass and nothing clicked, reset.
+        //Invoke("Retry", 20.0f); //if 20 seconds pass and nothing clicked, reset.
     }
 
     private void Retry()

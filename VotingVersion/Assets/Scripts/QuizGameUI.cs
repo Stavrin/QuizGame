@@ -19,6 +19,7 @@ public class QuizGameUI : MonoBehaviour
 
     public GameObject timeoutPanel, welldonePanel, retryPanel;
 
+    private float timer = 40f;
 
 
 
@@ -516,7 +517,7 @@ public class QuizGameUI : MonoBehaviour
 
     private IEnumerator MonitorButton()
     {
-         float timer = 20f;
+         timer = 20f;
 
         yield return delay;
 

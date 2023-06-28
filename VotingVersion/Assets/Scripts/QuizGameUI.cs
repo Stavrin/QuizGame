@@ -19,8 +19,7 @@ public class QuizGameUI : MonoBehaviour
 
     public GameObject timeoutPanel, welldonePanel, retryPanel;
 
-    private float timer = 20f;
-    private bool panelActive = true;
+
 
 
     [SerializeField] private Color correctCol, wrongCol, normalCol; //color of buttons
@@ -517,7 +516,7 @@ public class QuizGameUI : MonoBehaviour
 
     private IEnumerator MonitorButton()
     {
-
+         float timer = 20f;
 
         yield return delay;
 
@@ -530,7 +529,10 @@ public class QuizGameUI : MonoBehaviour
             yield return delay;
         }
 
-        RetryButton();
+        if (!gameOverPanel.activeSelf)
+            timer = 20f;
+        if (timer == 0)
+            RetryButton();
 
     }
 
